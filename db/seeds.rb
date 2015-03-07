@@ -10,4 +10,8 @@ christian = User.create(first_name: "Christian", last_name: "Chandler", email: "
 ga = User.create(first_name: "General Assembly", email: "ga.ga.co", zipcode:94117 , password: "1234", company: true)
 chobe = User.create(first_name: "Chobe Game Lodge", email: "chobegamelodge@botswana.org", zipcode:98776 , password: "1234", company: true)
 
+Category.create(name: "Service")
+Category.create(name: "Time")
+Category.create(name: "Money")
+Category.create(name: "Object")
 
