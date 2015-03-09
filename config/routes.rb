@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'access/landingpage'
+
   get 'gifts/index'
 
   get 'gifts/new'
