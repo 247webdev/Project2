@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'access/landingpage'
+  root "access#landingpage", as: :landingpage
 
   get 'gifts/index'
 
