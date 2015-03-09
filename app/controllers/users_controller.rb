@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def search #search by category or location
+    
   end
 
 end
