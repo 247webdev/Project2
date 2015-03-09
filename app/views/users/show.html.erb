@@ -1,2 +1,20 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= @user.first_name %>
+<%= @user.last_name %>
+
+
+<h1>What <%= User.first_name %> can Give.</h1>
+<p><%= @gifts.title %></p>
+<p><%= @gifts.description %></p>
+
+<!-- Contact user by email address -->
+<p>
+<a href="mailto:<%= @user.email %>Subject=Hello%20again" target="_top">Contact <%= @user.first_name %></a>
+</p>
+
+<h1>What <%= User.first_name %> would like to Get.</h1>
+<p><%= @gifts.title %></p>
+<p><%= @gifts.description %></p>
+<p>
+<a href="mailto:<%= @user.email %>Subject=Hello%20again" target="_top">Contact <%= @user.first_name %></a>
+</p>
+
