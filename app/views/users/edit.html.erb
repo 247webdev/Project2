@@ -1,1 +1,77 @@
-<% @user.first_name %>
+<p> <%= link_to "Home", "/users" %> | <%= link_to "About", "/about" %> | <%= link_to "Logout", "/logout" %>
+</p>
+
+<h1>Edit Your Profile</h1>
+
+<%= form_for @user do |f| %>
+    <p><%= f.text_field :first_name %></p>
+    <p><%= f.text_field :last_name %></p>
+    <p><%= f.text_field :email %></p>
+    <p><%= f.text_field :zipcode %></p>
+    <%= f.submit %>
+<% end %>
+
+<h2>What <%= @user.first_name %> can Give.</h2>
+<p>
+  <p>
+
+
+    <%= @gift[0].title %>
+
+    <%= form_for @user.gifts[0] do |f| %>
+      <p><%= f.text_field :title %></p>
+      <p><%= f.text_field :description %></p>
+
+      <%= f.submit %>
+
+    <% end %> 
+  </p>
+
+
+  <p>
+    <%= @gift[0].description %>
+  </p>
+  <p>
+  <% if @gift[0].category_id == 1 %>
+    <p>This is time</p>
+  <% elsif @gift[0].category_id == 2%>
+    <p>This is a service</p>
+  <% elsif @gift[0].category_id == 3%>
+    <p>This is a donation</p>
+  <% elsif @gift[0].category_id == 4%>
+    <p>This is a gift</p>
+  <% end %>
+  
+  </p>
+  <p>
+    <a href="mailto:<%= @user.email %>">Contact <%= @user.first_name %></a>
+  </p>
+  <h2>What <%= @user.first_name %> would like to Get.</h2>
+    <p>
+    <%= @gift[1].title %>
+  </p>
+  <p>
+    <%= @gift[1].description %>
+  </p>
+  <% if @gift[1].category_id == 1 %>
+    <p>This is a time</p>
+  <% elsif @gift[1].category_id == 2%>
+    <p>This is a service</p>
+  <% elsif @gift[1].category_id == 3%>
+    <p>This is a donation</p>
+  <% elsif @gift[1].category_id == 4%>
+    <p>This is a gift</p>
+  <% end %>
+
+
+  <%= form_for @user.gifts[1] do |f| %>
+      <p><%= f.text_field :title %></p>
+      <p><%= f.text_field :description %></p>
+
+      <%= f.submit %>
+
+    <% end %>
+  <p>
+    <a href="mailto:<%= @user.email %>">Contact <%= @user.first_name %></a>
+  </p>
+</p>
