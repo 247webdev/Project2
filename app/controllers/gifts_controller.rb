@@ -15,6 +15,5 @@ class GiftsController < ApplicationController
   end
 
   def delete
-    # this is a test.
   end
 end
