@@ -1,2 +1,30 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<!-- nav bar partial -->
+<h1>Search Profiles</h1>
+
+<%= form_tag("/users/search", method: "post") do %>
+  <%= input type="text" placeholder="Category" autofocus%> <%= input type="text" placeholder="Location"%> <%= submit_tag("Search") %>
+<% end %>
+
+<% if params[:Category] == "" && params[:Location] == "" %> <!-- if no search fields are entered -->
+  <%= flash[notice: "Please enter a search term"] %>
+
+<% elsif params[:Category] == "" && params[:Location] == "#{params[:Location]}" %> <!-- if location only is entered -->
+  <%= @users = User.where(Location == params[:Location]) %>
+
+<% elsif params[:Category] == "#{params[:Category]}" && params[:Location] == "" %> <!-- if category only is entered -->
+  <%= @users = User.where(Category == params[:Category]) %>
+
+<% else params[:Category] == "#{params[:Category]}" && params[:Location] == "#{params[:Location]}" %>
+  <%= @users = User.where(Location == params[:Location] and Category == params[:Category]) %>
+
+<% end %>
+
+
+
+<% form_for @users.each do |f| %>
+    <%= f.label :name%>
+    <%= f.text_field :name %>
+  </p>
+  <%= f.submit %>
+<% end %>
+
