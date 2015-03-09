@@ -29,7 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pry-rails'
 
 # Bootstrap gems
-gem 'bootstra-sass'
+gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 
 
