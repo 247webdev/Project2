@@ -1,31 +1,13 @@
 Rails.application.routes.draw do
   root "access#landingpage", as: :landingpage
 
-  get 'gifts/index'
-
-  get 'gifts/new'
-
-  get 'gifts/edit'
-
-  get 'gifts/show'
-
-  get 'gifts/create'
-
-  get 'gifts/delete'
-
-  get 'users/index'
-
-  get 'users/new'
-
-  get 'users/edit'
-
-  get 'users/show'
-
-  get 'users/create'
-
-  get 'users/delete'
+  get 'searches/results'
 
   resources :users
+
+  patch "/users/:id/edit" => 'gifts#update', as: :gift
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
