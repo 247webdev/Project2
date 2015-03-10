@@ -34,7 +34,11 @@ class SearchesController < ApplicationController
     category = categoryConverter params[:category]
 
     results = Gift.where(category_id: category)
+<<<<<<< HEAD
     
+=======
+    @users = results.map  { |result| result.user}
+>>>>>>> 27b7dd822d4ccf59a52eb1699b2bea0392f168c8
     binding.pry
   end
 

@@ -1,4 +1,5 @@
-<% @results.each do |result| %>
+<% @users.each do |user| %>
+  <h1><%= user.first_name %> <%= user.last_name %></h1>
 
   <div>
     <img src="" alt="">
@@ -15,5 +16,6 @@
       specific user's gift title
     </p>
   </div>
-  <h1><%= result.title %></h1>
+
+
   <% end %>
