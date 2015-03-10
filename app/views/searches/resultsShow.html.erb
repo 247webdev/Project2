@@ -1,19 +1,21 @@
 <% @users.each do |user| %>
-  <h1><%= user.first_name %> <%= user.last_name %></h1>
-
+<h1>
+  <%= user.first_name %> <%= user.last_name %>
+</h1>
+  
   <div>
     <img src="" alt="">
     <p>
       Give
     </p>
     <p>
-      specific user's gift title
+      <%= user.gifts.find_by_type_id(1).title %>
     </p>
     <p>
       Get
     </p>
     <p>
-      specific user's gift title
+      <%= user.gifts.find_by_type_id(2).title %>
     </p>
   </div>
 
