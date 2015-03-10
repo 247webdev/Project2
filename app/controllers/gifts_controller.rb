@@ -13,7 +13,17 @@ class GiftsController < ApplicationController
 
   def create
   end
+  def update
+    @gift = Gift.find(params[:id])
+    @gift.update_attributes gift_params
+    redirect_to :back
+    
+  end
 
   def delete
   end
+
+def gift_params
+  params.require(:gift).permit(:title, :description, :category_id)
+end
 end
