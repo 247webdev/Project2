@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  get 'access/landingpage'
 
   get 'searches/index'
 
-  get 'searches/results'
-  post 'searches/results'
+  # get 'searches/results'
+  post 'searches/results', to: "searches#results"
+
+  get 'searches/results/:category', to: "searches#resultsShow"
 
   resources :users
 

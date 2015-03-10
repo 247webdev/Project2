@@ -1,17 +1,19 @@
 class SearchesController < ApplicationController
 
   def index
-    if params[:category] != ("Time" || "Service" || "Money" || "Object")
-      binding.pry
-      flash.now[:notice] = "Please enter a valid search term. (Your options are Time, Service, Money or Object.)"
-      render :index
-    else 
-      redirect_to 'searches/results'
-    end
   end
 
   def results
-    
+    category = params[:category].downcase
+
+    if category == "time" || category == "service" || category == "money" || category == "object"
+      redirect_to action: "resultsShow", category: category
+      # redirect_to "/searches/results/#{params[:category]}"
+    else
+      flash.now[:notice] = "Please enter a valid search term. (Your options are Time, Service, Money or Object.)"
+      render :index
+
+    end
 
     # if params[:category] === "" && params[:location] === "" #if no search fields are entered 
     #  flash[:notice] === "Please enter a search term"
@@ -26,6 +28,26 @@ class SearchesController < ApplicationController
     #   @users === User.where(location === params[:location] && category === params[:category])
 
     # end
+  end
+
+  def resultsShow
+    category = categoryConverter params[:category]
+
+    results = Gift.where(category_id: category)
+    @users = results.map  { |result| result.user}
+  end
+
+  private
+  def categoryConverter param
+    if param == "service"
+      return 1
+    elsif param == "time"
+      return 2
+    elsif param == "money"
+      return 3
+    elsif param == "object"
+      return 4
+    end
   end
 
 end
