@@ -49,6 +49,18 @@
       <%= f.label :password %>:
       <%= f.text_field(:password, required: true) %>
     </p>
+    <p>
+    <%= f.fields_for :gifts do |builder| %>
+    <%= builder.label :title, "Title" %>
+    <%= builder.text_field :title %>
+    <%= builder.label :description, "Description" %>
+    <%= builder.text_field :description %>
+    <%= builder.label :category_id, "category_id" %>
+    <%= builder.text_field :category_id %>
+    <%= builder.label :type_id, "type_id" %>
+    <%= builder.text_field :type_id %>
+    <% end %>
+    </p>
 
   </span>
   
