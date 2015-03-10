@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def edit
@@ -19,19 +20,26 @@ class UsersController < ApplicationController
     @gift = @user.gifts
 
   end
+
+  def create
+    @user = User.new user_params
+    if @user.save
+      redirect_to root_path, notice: 'Success, your profile was created.'
+    else
+      render :new
+    end
+  end
+
   def update
     @user = User.find(params[:id])
     @user.update_attributes user_params
     redirect_to :back
   end
-  def create
-  end
 
   def delete
   end
 
-  def search #search by category or location
-    
+  def search #search by category or location    
   end
 
 end
@@ -40,4 +48,3 @@ private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :zipcode)
   end
-
