@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
+
+  get 'searches/results'
+
   resources :users
+
+  patch "/users/:id/edit" => 'gifts#update', as: :gift
+
 end
-#      Prefix Verb   URI Pattern               Controller#Action
+
+# From rake routes
+#    Prefix Verb   URI Pattern               Controller#Action
 #     users GET    /users(.:format)          users#index
 #           POST   /users(.:format)          users#create
 #  new_user GET    /users/new(.:format)      users#new
