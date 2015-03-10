@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   get 'access/landingpage'
 
+  get 'searches/index'
+
   get 'searches/results'
+  post 'searches/results'
 
   resources :users
 
