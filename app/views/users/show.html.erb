@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= @user.first_name %></title>
+</head>
+<body>
+<div class="container">
+
+
 <p> <%= link_to "Home", "/users" %> | <%= link_to "About", "/about" %> | 
 <% if @user.id == session[:user_id] %>
   <%= link_to "Edit", edit_user_path(@user)%> |
@@ -8,9 +18,13 @@
  <%= link_to "Logout", "/logout" %>
 </p>
 
-<h1><%= @user.first_name %>'s Profile</h1>
-<h2>What <%= @user.first_name %> can Give.</h2>
-<p>
+<h1 id = "showProfileName"><%= @user.first_name %>'s Profile</h1>
+
+<div class="profilePagePhoto center"></div>
+
+<div class="profilePageContent center">
+  <h2>What <%= @user.first_name %> can Give.</h2>
+  <p>
 
   <p>
     <%= @gift[0].title %>
@@ -28,7 +42,7 @@
   <% elsif @gift[0].category_id == 4%>
     <p>This is a gift</p>
   <% end %>
-  
+
   </p>
   <p>
     <a href="mailto:<%= @user.email %>">Contact <%= @user.first_name %></a>
@@ -52,4 +66,9 @@
   <p>
     <a href="mailto:<%= @user.email %>">Contact <%= @user.first_name %></a>
   </p>
-</p>
+  </p>
+</div>
+
+</div>
+</body>
+</html>

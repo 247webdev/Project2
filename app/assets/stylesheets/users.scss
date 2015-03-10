@@ -1,3 +1,25 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container {
+  background-color: #ECECEC;
+}
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#showProfileName {
+  text-align: center;
+}
+
+.profilePagePhoto {
+  width: 200px;
+  height: 200px;
+  background: teal;
+  border: 10px solid white;
+  border-radius: 100px;
+  margin: 0 auto;
+}
