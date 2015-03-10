@@ -1,0 +1,19 @@
+<!-- nav bar partial -->
+<% flash.each do |key, value| %>
+  
+  <% if key == "notice" %>
+    <%= content_tag :div, value, class: "text-center alert alert-warning" %>
+  <% elsif key == "alert" %>
+    <%= content_tag :div, value, class: "text-center alert alert-danger" %>
+  <% else %>
+    <%= content_tag :div, value, class: "text-center alert alert-success" %>
+  <% end %>
+<% end %>
+
+<h1>Search Profiles</h1>
+
+<%= form_tag("/searches/results", method: "post", class: "form-inline") do %>
+  <%= text_field_tag(:category, nil, placeholder: "Category")%>
+  <%= text_field_tag(:location, nil, placeholder: "Location")%>
+  <%= submit_tag("Search") %>
+<% end %>
