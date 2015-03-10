@@ -16,9 +16,9 @@
   <p>
 
 
-    <%= @gift[0].title %>
+    <%= @give.title %>
 
-    <%= form_for @user.gifts[0] do |f| %>
+    <%= form_for @give do |f| %>
       <p><%= f.text_field :title %></p>
       <p><%= f.text_field :description %></p>
 
@@ -29,16 +29,16 @@
 
 
   <p>
-    <%= @gift[0].description %>
+    <%= @give.description %>
   </p>
   <p>
-  <% if @gift[0].category_id == 1 %>
+  <% if @give.category_id == 1 %>
     <p>This is time</p>
-  <% elsif @gift[0].category_id == 2%>
+  <% elsif @give.category_id == 2%>
     <p>This is a service</p>
-  <% elsif @gift[0].category_id == 3%>
+  <% elsif @give.category_id == 3%>
     <p>This is a donation</p>
-  <% elsif @gift[0].category_id == 4%>
+  <% elsif @give.category_id == 4%>
     <p>This is a gift</p>
   <% end %>
   
@@ -48,23 +48,23 @@
   </p>
   <h2>What <%= @user.first_name %> would like to Get.</h2>
     <p>
-    <%= @gift[1].title %>
+    <%= @get.title %>
   </p>
   <p>
-    <%= @gift[1].description %>
+    <%= @get.description %>
   </p>
-  <% if @gift[1].category_id == 1 %>
+  <% if @get.category_id == 1 %>
     <p>This is a time</p>
-  <% elsif @gift[1].category_id == 2%>
+  <% elsif @get.category_id == 2%>
     <p>This is a service</p>
-  <% elsif @gift[1].category_id == 3%>
+  <% elsif @get.category_id == 3%>
     <p>This is a donation</p>
-  <% elsif @gift[1].category_id == 4%>
+  <% elsif @get.category_id == 4%>
     <p>This is a gift</p>
   <% end %>
 
 
-  <%= form_for @user.gifts[1] do |f| %>
+  <%= form_for @get do |f| %>
       <p><%= f.text_field :title %></p>
       <p><%= f.text_field :description %></p>
 

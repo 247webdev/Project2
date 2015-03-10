@@ -16,8 +16,8 @@ class GiftsController < ApplicationController
   def update
     @gift = Gift.find(params[:id])
     @gift.update_attributes gift_params
-    
     redirect_to :back
+    
   end
 
   def delete

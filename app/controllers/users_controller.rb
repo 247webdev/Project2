@@ -8,6 +8,10 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @gift = @user.gifts
+    @give = @gift.find_by(type_id: 1)
+    @get = @gift.find_by(type_id: 2)
+
+    # sort by type id
   end
 
   def show
