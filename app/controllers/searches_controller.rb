@@ -1,8 +1,7 @@
 class SearchesController < ApplicationController
 
   def index
-    if params[:category] != ("Time" || "Service" || "Money" || "Object")
-      binding.pry
+    if params[:category] != nil #("Time" || "Service" || "Money" || "Object")
       flash.now[:notice] = "Please enter a valid search term. (Your options are Time, Service, Money or Object.)"
       render :index
     else 
@@ -11,7 +10,7 @@ class SearchesController < ApplicationController
   end
 
   def results
-    
+    binding.pry
 
     # if params[:category] === "" && params[:location] === "" #if no search fields are entered 
     #  flash[:notice] === "Please enter a search term"
