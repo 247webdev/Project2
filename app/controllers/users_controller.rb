@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  def index
+  def index #for general search by non-validated users
   end
 
   def new
@@ -25,6 +25,11 @@ class UsersController < ApplicationController
 
   def delete
   end
+
+  def search #search by category or location
+    
+  end
+
 end
 
 private
