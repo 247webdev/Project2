@@ -8,7 +8,6 @@ class SearchesController < ApplicationController
 
     if category == "time" || category == "service" || category == "money" || category == "object"
       redirect_to action: "resultsShow", category: category
-      # redirect_to "searches/results/#{params[:category]}"
     else
       flash.now[:notice] = "Please enter a valid search term. (Your options are Time, Service, Money or Object.)"
       render :index
@@ -33,7 +32,8 @@ class SearchesController < ApplicationController
   def resultsShow
     category = categoryConverter params[:category]
 
-    @results = Gift.where(category_id: category)
+    results = Gift.where(category_id: category)
+    @users = results.map  { |result| result.user}
     binding.pry
   end
 
