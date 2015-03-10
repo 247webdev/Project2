@@ -7,6 +7,11 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @gift = @user.gifts
+    @give = @gift.find_by(type_id: 1)
+    @get = @gift.find_by(type_id: 2)
+
+    # sort by type id
   end
 
   def show
@@ -14,7 +19,11 @@ class UsersController < ApplicationController
     @gift = @user.gifts
 
   end
-
+  def update
+    @user = User.find(params[:id])
+    @user.update_attributes user_params
+    redirect_to :back
+  end
   def create
   end
 
@@ -26,3 +35,9 @@ class UsersController < ApplicationController
   end
 
 end
+
+private
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :zipcode)
+  end
+

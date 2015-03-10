@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   post 'searches/results'
 
   resources :users
-  
+
+  patch "/users/:id/edit" => 'gifts#update', as: :gift
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

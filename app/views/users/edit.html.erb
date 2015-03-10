@@ -1,1 +1,102 @@
-<% @user.first_name %>
+<p> <%= link_to "Home", "/users" %> | <%= link_to "About", "/about" %> | <%= link_to "Logout", "/logout" %>
+</p>
+<!-- Title -->
+<h1>Edit Your Profile</h1>
+<!-- Form for editing user information -->
+<%= form_for @user do |f| %>
+<p><%= f.text_field :first_name %></p>
+<p><%= f.text_field :last_name %></p>
+<p><%= f.text_field :email %></p>
+<p><%= f.text_field :zipcode %></p>
+<%= f.submit %>
+<% end %>
+<!-- What the user can give -->
+<h2>What <%= @user.first_name %> can Give.</h2>
+<p>
+  <p>
+    <%= @give.title %>
+    <p>
+      <%= @give.description %>
+    </p>
+    <!-- Logic for determining what to show for the user's give category -->
+    <p>
+      <% if @give.category_id == 1 %>
+      <p>This is time</p>
+      <% elsif @give.category_id == 2%>
+      <p>This is a service</p>
+      <% elsif @give.category_id == 3%>
+      <p>This is a donation</p>
+      <% elsif @give.category_id == 4%>
+      <p>This is a gift</p>
+      <% end %>
+    </p>
+
+    <!-- Form to Update the gives information -->
+    <%= form_for @give do |f| %>
+    <p><%= f.text_field :title %></p>
+    <p><%= f.text_field :description %></p>
+    <p><%= f.radio_button(:category_id, 1) %>
+      <%= label_tag(:category_id, "I am time") %>
+    </p>
+    <p><%= f.radio_button(:category_id, 2) %>
+      <%= label_tag(:category_id, "I am a service") %>
+    </p>
+    <p><%= f.radio_button(:category_id, 3) %>
+      <%= label_tag(:category_id, "I am a donation") %>
+    </p>
+    <p><%= f.radio_button(:category_id, 4) %>
+      <%= label_tag(:category_id, "I am a gift") %>
+    </p>
+
+    <%= f.submit %>
+
+    <% end %> 
+    </p>
+
+    <!-- What the user would like to get -->
+    <h2>What <%= @user.first_name %> would like to Get.</h2>
+      <p>
+        <%= @get.title %>
+      </p>
+      <p>
+        <%= @get.description %>
+      </p>
+      <!-- Logic to determine what the get category is -->
+        <% if @get.category_id == 1 %>
+          <p>This is a time</p>
+        <% elsif @get.category_id == 2%>
+          <p>This is a service</p>
+        <% elsif @get.category_id == 3%>
+          <p>This is a donation</p>
+        <% elsif @get.category_id == 4%>
+          <p>This is a gift</p>
+        <% end %>
+
+
+          <!-- Form for updating get information -->
+        <%= form_for @get do |f| %>
+        <p>
+          <%= f.text_field :title %>
+        </p>
+        <p>
+          <%= f.text_field :description %>
+        </p>
+        <p>
+          <%= f.radio_button(:category_id, 1) %>
+          <%= label_tag(:category_id, "I am time") %>
+        </p>
+        <p>
+          <%= f.radio_button(:category_id, 2) %>
+          <%= label_tag(:category_id, "I am a service") %>
+        </p>
+        <p>
+          <%= f.radio_button(:category_id, 3) %>
+          <%= label_tag(:category_id, "I am a donation") %>
+        </p>
+        <p>
+          <%= f.radio_button(:category_id, 4) %>
+          <%= label_tag(:category_id, "I am a gift") %>
+        </p>
+
+          <%= f.submit %>
+        <% end %>
