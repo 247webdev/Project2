@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    2.times do @user.gifts.build
+    end
   end
 
   def edit
@@ -18,13 +20,30 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @gift = @user.gifts
+    @give = @gift.find_by(type_id: 1)
+    @get = @gift.find_by(type_id: 2)
 
   end
 
   def create
     @user = User.new user_params
+    @give = params["user"]["gifts_attributes"]["0"]
+    @get = params["user"]["gifts_attributes"]["1"]
+
     if @user.save
-      redirect_to root_path, notice: 'Success, your profile was created.'
+      
+      newgive = @user.gifts.new
+      newget = @user.gifts.new
+
+      newgive.update(title: @give["title"])
+      newgive.update(description: @give["description"])
+      newgive.update(type_id: @give["type_id"])
+      newgive.update(category_id: @give["category_id"])
+      newget.update(title: @get["title"])
+      newget.update(description: @get["description"])
+      newget.update(type_id: @get["type_id"])
+      newget.update(category_id: @get["category_id"])
+      redirect_to users_path, notice: 'Success, your profile was created.'
     else
       render :new
     end
@@ -45,6 +64,10 @@ class UsersController < ApplicationController
 end
 
 private
+  def gift_params
+    params.require(:gift).permit(:id, :title, :description )
+  end
+
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :zipcode)
+    params.require(:user).permit(:id, :first_name, :last_name, :email, :zipcode,:password, :company, )
   end
