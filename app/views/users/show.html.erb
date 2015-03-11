@@ -20,11 +20,10 @@
 
 <h1 class = "showProfileName"><%= @user.first_name %>'s Profile</h1>
 
-<div class="profilePagePhoto center"></div>
+<div class="profilePagePhoto center" style="background-image: url(<%= @user.profile_pic %>); background-size: cover; background-position:center;"></div>
 <h3 class = "profilePageName center"><%= @user.first_name %> <%= @user.last_name %></h3>
 
 <div class="profilePageContent center">
-
   <% if @give.present? == true %>
 
   <h2 class = "profilePageGiftType">What <%= @user.first_name %> can Give.</h2>
