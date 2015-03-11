@@ -78,8 +78,19 @@ body {
 
 }
 
-.radioButtons label {
-  display: inline;
+textarea, input {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+.radioButton {
+  display: inline-block;
+  text-align: center;
+  margin: 10px;
+}
+
+.radioButton label {
+  display: block;
 }
 
 .updateUserInformation {
@@ -90,6 +101,39 @@ body {
   margin-top: 50px;
 }
 
+#gift_category_id_1 {
+  background-image: url("/assets/time.png");
+  -webkit-appearance: none;
+  width: 120px;
+  height: 100px;
+  background-size: 120px 100px;
+}
+
+#gift_category_id_2 {
+  background-image: url("/assets/service.png");
+  -webkit-appearance: none;
+  width: 120px;
+  height: 100px;
+  background-size: 120px 100px;
+}
+
+#gift_category_id_3 {
+  background-image: url("/assets/money.png");
+  -webkit-appearance: none;
+  width: 120px;
+  height: 100px;
+  background-size: 120px 100px;
+}
+
+#gift_category_id_4 {
+  background-image: url("/assets/object.png");
+  -webkit-appearance: none;
+  width: 120px;
+  height: 100px;
+  background-size: 120px 100px;
+}
+
+
 .updateGiftInformation img {
   height: 100px;
   width: 100px;
@@ -98,5 +142,4 @@ body {
 
 .updateGiftInformation p {
   margin-top: 20px;
-
 }
