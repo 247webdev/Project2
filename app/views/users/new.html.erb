@@ -1,6 +1,6 @@
 <!-- This is coming from: view/users/create.html.erb -->
 <div class="before-page text-center">
-<h1>Create a Profile</h1>
+  <h1>Create a Profile</h1>
 </div>
 <ul class="nav nav-tabs">
   <li role="presentation" class="active"><a href="#">Personal</a></li>
@@ -18,98 +18,127 @@
   </ul>
   <% end %>
 
-        <div class="row text-center">
+  <div class="row">
     <!-- Within Bootstrap, tab trigger this on Personal tab -->
-    <div class="col-sm-5">
+    <div class="col-sm-5 text-left">
       <div class="image-preview-single">
-      <p><b> Upload a Profile Picture:</b>
-        <img src="" alt="">
-        <input type="hidden" role="uploadcare-uploader" data-clearable="" data-images-only="" data-image-shrink="180x180 80%" data-public-key="8f615b911b6092cc8a13" value="" name="uploadcare">
-      </div>
-  </p>
+        <p><b> Upload a Profile Picture:</b>
+          <img src="" alt="">
+          <input type="hidden" role="uploadcare-uploader" data-clearable="" data-images-only="" data-image-shrink="180x180 80%" data-public-key="8f615b911b6092cc8a13" value="" name="uploadcare">
+        </div>
+      </p>
 
     </div>
     <div class="col-sm-7 text-left">
     <p>
-      <%= f.label :first_name %>:
-      <%= f.text_field(:first_name, required: true, autofocus: true) %>
-      <%= f.label :last_name %>:
-      <%= f.text_field(:last_name) %>
-    </p>
-    <!-- Within Bootstrap, tab trigger this on Personal tab -->
-    <p>
-      
-    </p>
-
-    <!-- Within Bootstrap, tab trigger this on Company tab -->
-    <p>
-      <%= f.label :email %>:
-      <%= f.text_field(:email, required: true) %>
-    </p>
-    <p>
-      <%= f.label :zipcode %>:
-      <%= f.text_field(:zipcode) %>
-    </p>
-    <p>
-      <%= f.label :password %>:
-      <%= f.password_field(:password, required: true) %>
-    </p>
-    <p>
+    <div class="row">
+        <div class="col-lg-2">
+        <%= f.label :first_name %>:
+        </div>
+        <div class="col-lg-3 input-fields-style">
+        <%= f.text_field(:first_name, required: true, autofocus: true) %>
+        </div>
+        <div class="col-lg-2">
+        <%= f.label :last_name %>:
+        </div>
+        <div class="col-lg-3 input-fields-style">
+        <%= f.text_field(:last_name) %>
+        </div>
     </div>
+    </p>
+    <p>
+      <div class="row">
+      <div class="col-lg-2">
+        <%= f.label :email %>:
+        </div>
+        <div class="col-lg-8 input-fields-style">
+        <%= f.text_field(:email, required: true) %>
+      </div>
+      </div>
+      </p>
+      <p>
+      <div class="row">
+      <div class="col-lg-2">
+        <%= f.label :zipcode %>:
+        </div>
+        <div class="col-lg-8 input-fields-style">
+        <%= f.text_field(:zipcode) %>
+        </div>
+        </div>
+      </p>
+      <p>
+      <div class="row">
+      <div class="col-lg-2">
+        <%= f.label :password %>:
+        </div>
+        <div class="col-lg-8 input-fields-style">
+        <%= f.password_field(:password, required: true) %>
+        </div>
+        </div>
+      </p>
+  </div>
+      </div>
+    </p>
     <p><%= f.fields_for :gifts do |builder| %></p>
-    
-    
-        <!-- <h1>Give:</h1> -->
-        <!-- <h1>Get:</h1> -->
+    <!-- <h1>Give:</h1> -->
+    <!-- <h1>Get:</h1> -->
     <% if builder.index == 0 %>
-      <h1>Give: </h1>
+    <h1>Give: </h1>
     <% else %>
-      <h1>Get: </h1>
+    <h1>Get: </h1>
     <% end %>
-    
+
     <%= builder.label :title, "Title" %>
     <p><%= builder.text_field :title %></p>
     <%= builder.label :description, "Description" %>
     <p><%= builder.text_area :description, rows: 5, cols: 70 %></p>
-   
-   <%= builder.radio_button :category_id, 1 %>
-   <%= builder.label :category_id, "I am time" %> 
-   <%= builder.radio_button :category_id, 2 %>
+    <div class="radioButtons">
+    <div class="radioButton">
+    <%= builder.radio_button :category_id, 1 %>
+    <%= builder.label :category_id, "I am time" %> 
+    </div>
+    <div class="radioButton">
+    <%= builder.radio_button :category_id, 2 %>
     <%= builder.label :category_id, "I am a service" %>
-   <%= builder.radio_button :category_id, 3 %>
+    </div>
+    <div class="radioButton">
+    <%= builder.radio_button :category_id, 3 %>
     <%= builder.label :category_id, "I am a donation" %>
-   <%= builder.radio_button :category_id, 4 %>
-  <%= builder.label :category_id, "I am a gift" %>
-
+    </div>
+    <div class="radioButton">
+    <%= builder.radio_button :category_id, 4 %>
+    <%= builder.label :category_id, "I am a gift" %>
+    </div>
+    </div>
     <% end %>
-    </p>
-
-  <p>
-  <%= f.submit%>
   </p>
 
-  </div>
-  
+  <p>
+    <%= f.submit%>
+  </p>
+
+</div>
 
 
 
 
 
 
-  <div class="row">
-    <span class="col-md-5 col-md-offset-1">
-      
-    </span>
-  </div>
 
-  <% end %>
-  <br><br>
-  <div class="row">
-    <span class="col-md-5 col-md-offset-1 text-left">
-    
+<div class="row">
+  <span class="col-md-5 col-md-offset-1">
+
+  </span>
+</div>
+
+<% end %>
+<br><br>
+<div class="row">
+  <span class="col-md-5 col-md-offset-1 text-left">
+
     <!-- add link to login path here -->
 
-    </span>
-  </div>
+  </span>
+</div>
 </div>
 <br><br><br><br>

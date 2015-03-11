@@ -90,7 +90,9 @@ body {
   margin-top: 50px;
 }
 
-#gift_category_id_1 {
+#gift_category_id_1,
+#user_gifts_attributes_0_category_id_1,
+#user_gifts_attributes_1_category_id_1 {
   background-image: url("/assets/time.png");
   -webkit-appearance: none;
   width: 120px;
@@ -98,7 +100,9 @@ body {
   background-size: 120px 100px;
 }
 
-#gift_category_id_2 {
+#gift_category_id_2,
+#user_gifts_attributes_0_category_id_2,
+#user_gifts_attributes_1_category_id_2 {
   background-image: url("/assets/service.png");
   -webkit-appearance: none;
   width: 120px;
@@ -106,7 +110,9 @@ body {
   background-size: 120px 100px;
 }
 
-#gift_category_id_3 {
+#gift_category_id_3,
+#user_gifts_attributes_0_category_id_3,
+#user_gifts_attributes_1_category_id_3 {
   background-image: url("/assets/money.png");
   -webkit-appearance: none;
   width: 120px;
@@ -114,7 +120,9 @@ body {
   background-size: 120px 100px;
 }
 
-#gift_category_id_4 {
+#gift_category_id_4,
+#user_gifts_attributes_0_category_id_4,
+#user_gifts_attributes_1_category_id_4 {
   background-image: url("/assets/object.png");
   -webkit-appearance: none;
   width: 120px;
@@ -147,4 +155,9 @@ body {
 }
 .form-style{
   text-align: left;
+}
+ 
+.input-fields-style input{
+  width: 100%;
+
 }
