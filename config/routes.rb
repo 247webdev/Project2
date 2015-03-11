@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root "access#landingpage", as: :landingpage
+  
+  get '/login', to: "access#login", as: 'login'
 
   get 'access/landingpage'
 
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
 
 
   # get 'searches/results'
-  post 'searches/results', to: "searches#results"
+  post 'searches/results', to: "searches#results" # Christian asking, why is this route needed? I'm not understanding and feel that it is not needed.
 
   get 'searches/results/:category', to: "searches#resultsShow"
 
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
 
   patch "/users/:id/edit" => 'gifts#update', as: :gift
 
+  delete '/logout', to: "access#logout", as: "logout"
 end
 
 # From rake routes
