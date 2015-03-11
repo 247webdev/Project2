@@ -25,7 +25,6 @@
       <%= f.label :first_name %>:
       <%= f.text_field(:first_name, required: true, autofocus: true) %>
     </p>
-
     <!-- Within Bootstrap, tab trigger this on Personal tab -->
     <p>
       <%= f.label :last_name %>:
@@ -37,34 +36,43 @@
       <%= f.label :company %>:
       <%= f.text_field(:company) %>
     </p>
-
     <p>
       <%= f.label :email %>:
       <%= f.text_field(:email, required: true) %>
     </p>
-
     <p>
       <%= f.label :zipcode %>:
       <%= f.text_field(:zipcode) %>
     </p>
-
     <p>
       <%= f.label :password %>:
-      <%= f.text_field(:password, required: true) %>
+      <%= f.password_field(:password, required: true) %>
     </p>
     <p>
-    <%= f.fields_for :gifts do |builder| %>
+    <p><%= f.fields_for :gifts do |builder| %></p>
+        <!-- <h1>Give:</h1> -->
+        <!-- <h1>Get:</h1> -->
+    
+    <h1>Give: </h1>
     <%= builder.label :title, "Title" %>
-    <%= builder.text_field :title %>
+    <p><%= builder.text_field :title %></p>
     <%= builder.label :description, "Description" %>
-    <%= builder.text_field :description %>
-    <%= builder.label :category_id, "category_id" %>
-    <%= builder.text_field :category_id %>
-    <%= builder.label :type_id, "type_id" %>
-    <%= builder.text_field :type_id %>
+    <p><%= builder.text_area :description, rows: 5, cols: 70 %></p>
+   
+   <%= builder.radio_button :category_id, 1 %>
+   <%= builder.label :category_id, "I am time" %> 
+   <%= builder.radio_button :category_id, 2 %>
+    <%= builder.label :category_id, "I am a service" %>
+   <%= builder.radio_button :category_id, 3 %>
+    <%= builder.label :category_id, "I am a donation" %>
+   <%= builder.radio_button :category_id, 4 %>
+  <%= builder.label :category_id, "I am a gift" %>
+
     <% end %>
     </p>
-
+  <p>
+  <%= f.submit%>
+  </p>
   </span>
   
 
@@ -75,7 +83,7 @@
 
   <div class="row">
     <span class="col-md-5 col-md-offset-1">
-      <%= f.submit%>
+      
     </span>
   </div>
 
