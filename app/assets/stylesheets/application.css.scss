@@ -15,4 +15,47 @@
  */
 
  @import "bootstrap";
+body{
+  font-family: Montserrat, sans-serif;
+}
+ .hero-image{
+  background-image: url('7904721504_8e9c6caa06_b.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 750px;
+  background-position: center;
+ }
+.hero-heading{
+  color: white;
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.75);
+}
+.hero-heading h2{
+  font-size: 3em;
+}
+.hero-heading p{
+  font-size: 1.75em;
+  font-family: Lato;
+  font-weight: 300;
+}
+.hero-heading button{
+  width: 310px;
+  height: 56px;
+  border-radius: 100px;
+  font-size: 1.75em;
+  color: #333333;
+  font-family: Lato, sans-serif;
 
+  background: #ffffff; /* Old browsers */
+  background: -moz-linear-gradient(top,  #ffffff 0%, #cbcbcb 99%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(99%,#cbcbcb)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #ffffff 0%,#cbcbcb 99%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #ffffff 0%,#cbcbcb 99%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #ffffff 0%,#cbcbcb 99%); /* IE10+ */
+  background: linear-gradient(to bottom,  #ffffff 0%,#cbcbcb 99%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cbcbcb',GradientType=0 ); /* IE6-9 */
+}
+
+.header-spacing{
+  padding-top: 280px;
+
+}
