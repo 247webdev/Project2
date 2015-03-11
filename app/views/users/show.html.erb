@@ -53,23 +53,6 @@
 <% end %>
 
 <% if @get.present? == true %>
-  <h2>What <%= @user.first_name %> would like to Get.</h2>
-    <p>
-    <%= @get.title %>
-  </p>
-  <p>
-    <%= @get.description %>
-  </p>
-  <% if @get.category_id == 1 %>
-    <p>This is a time</p>
-  <% elsif @get.category_id == 2%>
-    <p>This is a service</p>
-  <% elsif @get.category_id == 3%>
-    <p>This is a donation</p>
-  <% elsif @get.category_id == 4%>
-    <p>This is a gift</p>
-    <% end %>
-
 
   <h2 class = "profilePageGiftType">What <%= @user.first_name %> would like to Get.</h2>
   <h3 class = "profilePageGiftTitle center"><%= @get.title %></h3>
