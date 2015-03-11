@@ -52,6 +52,8 @@ class SearchesController < ApplicationController
 
     users = results.map  { |result| result.user}
 
+    binding.pry
+
     valid_locations.map! { |item| item[:zipcode] }
 
     @users = users.map { |item| valid_locations.include? item.zipcode }
