@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    2.times do @user.gifts.build
+    2.times do @user.gifts.new
     end
   end
 
