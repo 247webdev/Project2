@@ -1,2 +1,100 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<!-- This is coming from: view/users/create.html.erb -->
+<h1>Create a Profile</h1>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">Personal</a></li>
+  <li role="presentation"><a href="#">Company</a></li>
+</ul>
+
+<div class="container">
+
+  <%= form_for @user do |f| %>
+
+  <span class="row"> <!-- This is the Profile picture upload section -->
+    <span class="col-md-4 col-md-offset-2">
+      <!-- this is Arebeth's photo tool area -->
+      <input type="hidden" role="uploadcare-uploader"
+        data-crop="400:300" />
+
+    </span>
+  </span>
+
+  <span>
+    <!-- Within Bootstrap, tab trigger this on Personal tab -->
+    <p>
+      <%= f.label :first_name %>:
+      <%= f.text_field(:first_name, required: true, autofocus: true) %>
+    </p>
+    <!-- Within Bootstrap, tab trigger this on Personal tab -->
+    <p>
+      <%= f.label :last_name %>:
+      <%= f.text_field(:last_name) %>
+    </p>
+
+    <!-- Within Bootstrap, tab trigger this on Company tab -->
+    <p>
+      <%= f.label :company %>:
+      <%= f.text_field(:company) %>
+    </p>
+    <p>
+      <%= f.label :email %>:
+      <%= f.text_field(:email, required: true) %>
+    </p>
+    <p>
+      <%= f.label :zipcode %>:
+      <%= f.text_field(:zipcode) %>
+    </p>
+    <p>
+      <%= f.label :password %>:
+      <%= f.password_field(:password, required: true) %>
+    </p>
+    <p>
+    <p><%= f.fields_for :gifts do |builder| %></p>
+        <!-- <h1>Give:</h1> -->
+        <!-- <h1>Get:</h1> -->
+    
+    <h1>Give: </h1>
+    <%= builder.label :title, "Title" %>
+    <p><%= builder.text_field :title %></p>
+    <%= builder.label :description, "Description" %>
+    <p><%= builder.text_area :description, rows: 5, cols: 70 %></p>
+   
+   <%= builder.radio_button :category_id, 1 %>
+   <%= builder.label :category_id, "I am time" %> 
+   <%= builder.radio_button :category_id, 2 %>
+    <%= builder.label :category_id, "I am a service" %>
+   <%= builder.radio_button :category_id, 3 %>
+    <%= builder.label :category_id, "I am a donation" %>
+   <%= builder.radio_button :category_id, 4 %>
+  <%= builder.label :category_id, "I am a gift" %>
+
+    <% end %>
+    </p>
+  <p>
+  <%= f.submit%>
+  </p>
+  </span>
+  
+
+
+
+
+
+
+  <div class="row">
+    <span class="col-md-5 col-md-offset-1">
+      
+    </span>
+  </div>
+
+  <% end %>
+  <br><br>
+  <div class="row">
+    <span class="col-md-5 col-md-offset-1 text-left">
+    
+    <!-- add link to login path here -->
+
+    </span>
+  </div>
+</div>
+<br><br><br><br>

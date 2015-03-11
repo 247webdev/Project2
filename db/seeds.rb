@@ -1,7 +1,24 @@
+User.destroy_all
+Category.destroy_all
+Comment.destroy_all
+Gift.destroy_all
+Zipcode.destroy_all
+
 Category.create(name: "Service")
 Category.create(name: "Time")
 Category.create(name: "Money")
 Category.create(name: "Object")
+
+require 'csv'    
+
+csv_text = File.read(File.expand_path('db/zipcodes.csv'))
+csv = CSV.parse(csv_text, :headers => true)
+
+ActiveRecord::Base.transaction do
+  csv.each do |row|
+    Zipcode.create!(row.to_hash)
+  end
+end
 
 pocahontas = User.create(first_name: "Pocahontas", email: "complianceinfo@epa.gov", zipcode: 58401, password: "1234", company: false)
 reid = User.create(first_name: "Reid", last_name: "Lewis", email: "reidhlewis91@gmail.com", zipcode: 94107, password: "1234", company: false)
@@ -14,7 +31,6 @@ abraham = User.create(first_name: "Abraham", last_name: "Lincoln", email: "lucky
 teddy = User.create(first_name: "Theodore", last_name: "Roosevelt", email: "roughrider@america.com", zipcode: 10004, password: "1234", company: false)
 franklin = User.create(first_name: "Franklin", last_name: "Roosevelt", email: "fdr@marchofdimes.com", zipcode: 12538, password: "1234", company: false)
 ron = User.create(first_name: "Ron", last_name: "Swanson", email: "dontemailme@antigov.com", zipcode: 46035, password: "1234", company: false)
-
 
 ga = User.create(first_name: "General Assembly", email: "ga.ga.co", zipcode:94117 , password: "1234", company: true)
 chobe = User.create(first_name: "Chobe Game Lodge", email: "chobegamelodge@botswana.org", zipcode:98776 , password: "1234", company: true)
@@ -40,7 +56,6 @@ george.gifts.create(title: "Less Taxation", description: "I don't really dig how
 sacagawea.gifts.create(title: "Guide Knowledge", description: "I can help guide you through the American West", type_id: 1, category_id: 1)
 sacagawea.gifts.create(title: "Babysitter", description: "Looking for a babysitter on Tuesdays and Thursdays.", type_id: 2, category_id: 2)
 
-
 abraham.gifts.create(title: "Hard Work", description: "I've worked hard my whole life, and have some free time to do so.", type_id: 1, category_id: 2)
 abraham.gifts.create(title: "Boat Pole", description: "I'm in need of a new flat boat pushing pole.", type_id: 2, category_id: 4)
 
@@ -59,3 +74,80 @@ ga.gifts.create(title: "Power Plugs", description: "We're in need of some new po
 
 chobe.gifts.create(title: "Safari Experience", description: "We have some extra spots on our morning safaris we're hoping to give out.", type_id: 1, category_id: 1)
 chobe.gifts.create(title: "Stop Urban Sprawl", description: "Our nature reserves are dwindling. Please donate to help preserve Botswana's beauties!", type_id: 2, category_id: 3)
+
+# ZipCode.create(zip: 00210, city: "Portsmouth", state: "NH", latitude: 43.005895, longitude: -71.013202)
+# ZipCode.create(zip: aaaaa, city: "bbbbbb", state: "cc", latitude: ddddd, longitude: eeeee)
+
+# SF specific zip codes range from 94099 to 94188
+# ZipCode.create(zip: 94099, city: "South San Francisco", state: "CA", latitude: 37.381144, longitude: -122.334825)
+# ZipCode.create(zip: 94101, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94102, city: "San Francisco", state: "CA", latitude: 37.779329, longitude: -122.41915)
+# ZipCode.create(zip: 94103, city: "San Francisco", state: "CA", latitude: 37.772329, longitude: -122.41087)
+# ZipCode.create(zip: 94104, city: "San Francisco", state: "CA", latitude: 37.791728, longitude: -122.4019)
+# ZipCode.create(zip: 94105, city: "San Francisco", state: "CA", latitude: 37.789228, longitude: -122.3957)
+# ZipCode.create(zip: 94106, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94107, city: "San Francisco", state: "CA", latitude: 37.766529, longitude: -122.39577)
+# ZipCode.create(zip: 94108, city: "San Francisco", state: "CA", latitude: 37.792678, longitude: -122.40793)
+# ZipCode.create(zip: 94109, city: "San Francisco", state: "CA", latitude: 37.792778, longitude: -122.42188)
+# ZipCode.create(zip: 94110, city: "San Francisco", state: "CA", latitude: 37.74873,  longitude: -122.41545)
+# ZipCode.create(zip: 94111, city: "San Francisco", state: "CA", latitude: 37.798228, longitude: -122.40027)
+# ZipCode.create(zip: 94112, city: "San Francisco", state: "CA", latitude: 37.720931, longitude: -122.44241)
+# ZipCode.create(zip: 94114, city: "San Francisco", state: "CA", latitude: 37.758434, longitude: -122.43512)
+# ZipCode.create(zip: 94115, city: "San Francisco", state: "CA", latitude: 37.786129, longitude: -122.43736)
+# ZipCode.create(zip: 94116, city: "San Francisco", state: "CA", latitude: 37.743381, longitude: -122.48578)
+# ZipCode.create(zip: 94117, city: "San Francisco", state: "CA", latitude: 37.770937, longitude: -122.44276)
+# ZipCode.create(zip: 94118, city: "San Francisco", state: "CA", latitude: 37.782029, longitude: -122.46158)
+# ZipCode.create(zip: 94119, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94120, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94121, city: "San Francisco", state: "CA", latitude: 37.778729, longitude: -122.49265)
+# ZipCode.create(zip: 94122, city: "San Francisco", state: "CA", latitude: 37.75838,  longitude: -122.48478)
+# ZipCode.create(zip: 94123, city: "San Francisco", state: "CA", latitude: 37.801028, longitude: -122.43836)
+# ZipCode.create(zip: 94124, city: "San Francisco", state: "CA", latitude: 37.732797, longitude: -122.39348)
+# ZipCode.create(zip: 94125, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94126, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94127, city: "San Francisco", state: "CA", latitude: 37.734964, longitude: -122.4597)
+# ZipCode.create(zip: 94128, city: "San Francisco", state: "CA", latitude: 37.621964, longitude: -122.39534)
+# ZipCode.create(zip: 94129, city: "San Francisco", state: "CA", latitude: 37.79984,  longitude: -122.46167)
+# ZipCode.create(zip: 94130, city: "San Francisco", state: "CA", latitude: 37.819423, longitude: -122.36966)
+# ZipCode.create(zip: 94131, city: "San Francisco", state: "CA", latitude: 37.741797, longitude: -122.4378)
+# ZipCode.create(zip: 94132, city: "San Francisco", state: "CA", latitude: 37.724231, longitude: -122.47958)
+# ZipCode.create(zip: 94133, city: "San Francisco", state: "CA", latitude: 37.801878, longitude: -122.41018)
+# ZipCode.create(zip: 94134, city: "San Francisco", state: "CA", latitude: 37.719581, longitude: -122.41085)
+# ZipCode.create(zip: 94135, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94136, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94137, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94138, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94139, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94140, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94141, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94142, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94143, city: "San Francisco", state: "CA", latitude: 37.76313,  longitude: -122.458582)
+# ZipCode.create(zip: 94144, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94145, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94146, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94147, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94150, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94151, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94152, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94153, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94154, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94155, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94156, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94157, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94159, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94160, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94161, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94162, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94163, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94164, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94165, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94166, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94167, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94168, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94169, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94170, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94171, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94172, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94175, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94177, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)
+# ZipCode.create(zip: 94188, city: "San Francisco", state: "CA", latitude: 37.784827, longitude: -122.727802)

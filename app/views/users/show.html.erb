@@ -28,9 +28,11 @@
   <p>
 
   <h3 class = "profilePageGiftTitle center"><%= @gift[0].title %></h3>
+  
   <h4 class = "profilePageGiftDescription center">
     <%= @gift[0].description %>
   </h4>
+  
   <div class="profilePageGiftCategoryImage center">
     <% if @gift[0].category_id == 1 %>
       <%= image_tag("service.png") %>
@@ -42,16 +44,19 @@
       <%= image_tag("object.png") %>
     <% end %>
   </div>
-
-  </p>
+  
   <p>
     <a href="mailto:<%= @user.email %>">Contact <%= @user.first_name %></a>
   </p>
+
   <h2 class = "profilePageGiftType">What <%= @user.first_name %> would like to Get.</h2>
+  
   <h3 class = "profilePageGiftTitle center"><%= @gift[1].title %></h3>
+  
   <h4 class = "profilePageGiftDescription center">
     <%= @gift[1].description %>
   </h4>
+
   <div class="profilePageGiftCategoryImage center">
     <% if @gift[1].category_id == 1 %>
       <%= image_tag("service.png") %>
@@ -63,6 +68,7 @@
       <%= image_tag("object.png") %>
     <% end %>
   </div>
+
   <p>
     <a href="mailto:<%= @user.email %>">Contact <%= @user.first_name %></a>
   </p>
