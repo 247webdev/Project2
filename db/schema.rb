@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 20150311182034) do
     t.string   "password"
     t.string   "password_digest"
     t.boolean  "company"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "profile_pic"
   end
 

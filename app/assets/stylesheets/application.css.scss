@@ -17,6 +17,7 @@
  @import "bootstrap";
 body{
   font-family: Montserrat, sans-serif;
+  padding-top: 0px;
 }
  .hero-image{
   background-image: url('7904721504_8e9c6caa06_b.jpg');
@@ -57,5 +58,68 @@ body{
 
 .header-spacing{
   padding-top: 280px;
-
 }
+.info-row{
+  
+}
+.info-boxes{
+  border-style: solid;
+  border-color: white;
+  border-width: 15px;
+  padding-bottom: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 350px;
+  color: white;
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.75);
+}
+
+.info-boxes p{
+  margin-top: 150px;
+  font-size: 1.125em;
+  }
+.info-boxes button{
+background-color: #5482d3;
+font-family: Lato;
+padding-left: 30px;
+padding-right: 30px;
+padding-top: 5px;
+padding-bottom: 5px;
+border-color: white;
+border-radius: 30px;
+}
+.give-info{
+  background-image: url('6192694461_2c74b2ba1a_o.jpg')
+}
+.get-info{
+  background-image: url('160H.jpg') 
+}
+
+.special-padding-for-info-boxes{
+  padding-top: 100px;
+  font-size: 1.375em;
+  font-family: Lato, sans-serif;
+}
+.give-special-info{
+  background-image: url('7051197255_13c8dabe24_h.jpg')
+}
+.get-special-info{
+  background-image: url('15434712898_5dde04cc28_b.jpg')
+}
+.overflow-hide{
+  overflow: hidden;
+}
+.de-pad{
+  padding-top: 0px ;
+  margin-top: 20px !important;
+}
+.horizontal-justify{
+  padding-top: 60px;
+  background-color: #e0ccb8;
+}
+.infographic-row{
+  margin-top: 20px;
+}
+
+
