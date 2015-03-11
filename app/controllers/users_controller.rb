@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    
     @user = User.find(params[:id])
     @gift = @user.gifts
     @give = @gift.find_by(type_id: 1)
