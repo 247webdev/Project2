@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .container {
-  background-color: #ECECEC;
+  background-color: #DEEEE9;
 }
 
 .center {
@@ -11,7 +11,7 @@
   text-align: center;
 }
 
-#showProfileName {
+.showProfileName {
   text-align: center;
 }
 
@@ -22,4 +22,35 @@
   border: 10px solid white;
   border-radius: 100px;
   margin: 0 auto;
+}
+
+.profilePageGiftTitle, .profilePageName {
+  background-color: white;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.profilePageName {
+  margin-top: 20px;
+}
+
+.profilePageGiftType {
+  padding-top: 40px;
+}
+
+.profilePageGiftType:first-child {
+  padding-top: 80px;
+}
+
+.profilePageGiftDescription {
+  background-color: white;
+  border-radius: 5px;
+  width: 400px;
+  margin-top: 20px;
+}
+
+.profilePageGiftCategoryImage img {
+  margin-top: 20px;
+  height: 100px;
+  width: 100px;
 }

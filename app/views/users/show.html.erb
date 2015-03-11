@@ -18,51 +18,51 @@
  <%= link_to "Logout", "/logout" %>
 </p>
 
-<h1 id = "showProfileName"><%= @user.first_name %>'s Profile</h1>
+<h1 class = "showProfileName"><%= @user.first_name %>'s Profile</h1>
 
 <div class="profilePagePhoto center"></div>
+<h3 class = "profilePageName center"><%= @user.first_name %> <%= @user.last_name %></h3>
 
 <div class="profilePageContent center">
-  <h2>What <%= @user.first_name %> can Give.</h2>
+  <h2 class = "profilePageGiftType">What <%= @user.first_name %> can Give.</h2>
   <p>
 
-  <p>
-    <%= @gift[0].title %>
-  </p>
-  <p>
+  <h3 class = "profilePageGiftTitle center"><%= @gift[0].title %></h3>
+  <h4 class = "profilePageGiftDescription center">
     <%= @gift[0].description %>
-  </p>
-  <p>
-  <% if @gift[0].category_id == 1 %>
-    <p>This is time</p>
-  <% elsif @gift[0].category_id == 2%>
-    <p>This is a service</p>
-  <% elsif @gift[0].category_id == 3%>
-    <p>This is a donation</p>
-  <% elsif @gift[0].category_id == 4%>
-    <p>This is a gift</p>
-  <% end %>
+  </h4>
+  <div class="profilePageGiftCategoryImage center">
+    <% if @gift[0].category_id == 1 %>
+      <%= image_tag("service.png") %>
+    <% elsif @gift[0].category_id == 2%>
+      <%= image_tag("time.png") %>
+    <% elsif @gift[0].category_id == 3%>
+      <%= image_tag("money.png") %>
+    <% elsif @gift[0].category_id == 4%>
+      <%= image_tag("object.png") %>
+    <% end %>
+  </div>
 
   </p>
   <p>
     <a href="mailto:<%= @user.email %>">Contact <%= @user.first_name %></a>
   </p>
-  <h2>What <%= @user.first_name %> would like to Get.</h2>
-    <p>
-    <%= @gift[1].title %>
-  </p>
-  <p>
+  <h2 class = "profilePageGiftType">What <%= @user.first_name %> would like to Get.</h2>
+  <h3 class = "profilePageGiftTitle center"><%= @gift[1].title %></h3>
+  <h4 class = "profilePageGiftDescription center">
     <%= @gift[1].description %>
-  </p>
-  <% if @gift[1].category_id == 1 %>
-    <p>This is a time</p>
-  <% elsif @gift[1].category_id == 2%>
-    <p>This is a service</p>
-  <% elsif @gift[1].category_id == 3%>
-    <p>This is a donation</p>
-  <% elsif @gift[1].category_id == 4%>
-    <p>This is a gift</p>
-  <% end %>
+  </h4>
+  <div class="profilePageGiftCategoryImage center">
+    <% if @gift[1].category_id == 1 %>
+      <%= image_tag("service.png") %>
+    <% elsif @gift[1].category_id == 2%>
+      <%= image_tag("time.png") %>
+    <% elsif @gift[1].category_id == 3%>
+      <%= image_tag("money.png") %>
+    <% elsif @gift[1].category_id == 4%>
+      <%= image_tag("object.png") %>
+    <% end %>
+  </div>
   <p>
     <a href="mailto:<%= @user.email %>">Contact <%= @user.first_name %></a>
   </p>
