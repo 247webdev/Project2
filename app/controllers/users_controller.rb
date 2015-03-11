@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    
     @user = User.find(params[:id])
     @gift = @user.gifts
     @give = @gift.find_by(type_id: 1)
@@ -30,9 +31,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new user_params
+    @user.update(profile_pic: params[:uploadcare])
     @give = params["user"]["gifts_attributes"]["0"]
     @get = params["user"]["gifts_attributes"]["1"]
-    
+    binding.pry
 
     if @user.save
       newgive = @user.gifts.new
@@ -79,3 +81,4 @@ private
   end
 
 end
+
