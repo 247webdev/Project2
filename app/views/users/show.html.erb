@@ -9,9 +9,11 @@
 </p>
 
 <h1><%= @user.first_name %>'s Profile</h1>
+
+
 <h2>What <%= @user.first_name %> can Give.</h2>
 <p>
-
+<% if @give.present? == true %>
   <p>
     <%= @give.title %>
   </p>
@@ -19,6 +21,7 @@
     <%= @give.description %>
   </p>
   <p>
+
   <% if @give.category_id == 1 %>
     <p>This is time</p>
   <% elsif @give.category_id == 2%>
@@ -27,12 +30,15 @@
     <p>This is a donation</p>
   <% elsif @give.category_id == 4%>
     <p>This is a gift</p>
-  <% end %>
+  <% end %> 
   
   </p>
   <p>
     <a href="mailto:<%= @user.email %>">Contact <%= @user.first_name %></a>
   </p>
+<% end %>
+
+<% if @get.present? == true %>
   <h2>What <%= @user.first_name %> would like to Get.</h2>
     <p>
     <%= @get.title %>
@@ -48,7 +54,8 @@
     <p>This is a donation</p>
   <% elsif @get.category_id == 4%>
     <p>This is a gift</p>
-  <% end %>
+    <% end %>
+<% end %>
   <p>
     <a href="mailto:<%= @user.email %>">Contact <%= @user.first_name %></a>
   </p>
