@@ -1,3 +1,5 @@
+require 'zipcode_search'
+
 class SearchesController < ApplicationController
 
   def index
@@ -5,9 +7,10 @@ class SearchesController < ApplicationController
 
   def results
     category = params[:category].downcase
+    @radius = params[:radius]
 
-    if category == "time" || category == "service" || category == "money" || category == "object"
-      redirect_to action: "resultsShow", category: category
+    if (category == "time" || category == "service" || category == "money" || category == "object") && @radius
+      redirect_to action: "resultsShow", category: category, radius: @radius
       # redirect_to "/searches/results/#{params[:category]}"
     else
       flash.now[:notice] = "Please enter a valid search term. (Your options are Time, Service, Money or Object.)"
@@ -31,14 +34,28 @@ class SearchesController < ApplicationController
   end
 
   def resultsShow
-    category = categoryConverter params[:category]
+    category = category_converter params[:category]
+    @radius = 15
+    # this is the logged in user's zipcode, it is passed into the zip_code_perimeter_search as the foci zipcode
 
+    # UNCOMMENT THIS ONCE SESSION login is complete
+    # zip = User.find_by_id(session[:user_id]).zipcode
+    zip = Zipcode.find_by_zipcode(User.find_by_id(1).zipcode) # this is test code until session[:user_id] is implemented. Comment this and uncomment above.
+
+    valid_locations = zip.perimeter_search(@radius)
+    # validLocations = :zip_code_perimeter_search(zip, @radius)
+    
+    # these are the gifts based on the category search
     results = Gift.where(category_id: category)
+
+    # Now check the zipcode of each gift within results is also within the validLocations. Map that back to results and there are the gifts withing the user's radius search.
+    results.map { |item| valid_locations.include? item.zipcode }
+    
     @users = results.map  { |result| result.user}
   end
 
   private
-  def categoryConverter param
+  def category_converter param
     if param == "service"
       return 1
     elsif param == "time"
