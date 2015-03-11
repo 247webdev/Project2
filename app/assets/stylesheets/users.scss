@@ -30,6 +30,10 @@
   width: 300px;
 }
 
+.profilePageGiftTitle {
+  margin-top: 20px;
+}
+
 .profilePageName {
   margin-top: 20px;
 }
@@ -39,7 +43,7 @@
 }
 
 .profilePageGiftType:first-child {
-  padding-top: 80px;
+  padding-top: 70px;
 }
 
 .profilePageGiftDescription {
@@ -53,4 +57,26 @@
   margin-top: 20px;
   height: 100px;
   width: 100px;
+}
+
+.radioButtons label {
+  display: inline;
+}
+
+.updateUserInformation {
+  margin-top: 30px;
+}
+
+.updateGiftInformation {
+  margin-top: 50px;
+}
+
+.updateGiftInformation img {
+  height: 100px;
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.updateGiftInformation p {
+  margin-top: 20px;
 }
