@@ -14,6 +14,8 @@
 
 <%= form_tag("/searches/results", method: "post", class: "form-inline") do %>
   <%= text_field_tag(:category, nil, placeholder: "Category")%>
-  <%= text_field_tag(:location, nil, placeholder: "Location")%>
+  <%= text_field_tag(:radius, nil, placeholder: "Distance in miles")%>
+  <!-- make a drop down field with radius values of: up to 1 mile, 2,3,4,5,6,7,8,9,10,15,20,30,50, any -->
+  <%=  %>
   <%= submit_tag("Search") %>
 <% end %>
