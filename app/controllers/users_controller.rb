@@ -68,7 +68,7 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:id, :first_name, :last_name, :email, :zipcode,:password )
+    params.require(:user).permit(:id, :first_name, :last_name, :email, :zipcode, :password )
   end
 
   #see if the user is logged in and if so redirect them back to home
