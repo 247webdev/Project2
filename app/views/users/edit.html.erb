@@ -34,7 +34,7 @@
     <!-- Form to Update the gives information -->
     <%= form_for @give do |f| %>
     <p><%= f.text_field :title %></p>
-    <p><%= f.text_field :description %></p>
+    <p><%= f.text_area :description, rows: 5, cols: 70%></p>
     <p><%= f.radio_button(:category_id, 1) %>
       <%= label_tag(:category_id, "I am time") %>
     </p>
@@ -79,7 +79,7 @@
           <%= f.text_field :title %>
         </p>
         <p>
-          <%= f.text_field :description %>
+          <%= f.text_area :description, rows: 5, cols: 70 %>
         </p>
         <p>
           <%= f.radio_button(:category_id, 1) %>
