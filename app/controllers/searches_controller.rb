@@ -34,7 +34,7 @@ class SearchesController < ApplicationController
   end
 
   def resultsShow
-    category = categoryConverter params[:category]
+    category = category_converter params[:category]
     @radius = 15
     # this is the logged in user's zipcode, it is passed into the zip_code_perimeter_search as the foci zipcode
 
@@ -55,8 +55,7 @@ class SearchesController < ApplicationController
   end
 
   private
-
-  def categoryConverter param
+  def category_converter param
     if param == "service"
       return 1
     elsif param == "time"

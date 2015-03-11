@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Project2</title>
+  <title>Good&amp;Co.</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
+</head>
+<body>
+  
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container" id="navcontainer">
+      
+      <p class="navbar-text navbar-left"><span>Good</span>&amp;Co.</p>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to("Search", controller: "searches", action: "index") %></li>
+        <% if session[:user_id] %>
+          <li><%= link_to("Profile", "/users/#{session[:user_id]}") %></li>
+          <li><%= link_to("Logout", controller: "access", action: "logout") %></li>
+        <% else %>
+          <li><%= link_to("Login", "/") %></li>
+        <% end %>
+      </ul>
+      
+    </div>
+  </nav>
+
+
+<%= yield %>
 <!-- Widget config for Upload Care -->
 <script>
   UPLOADCARE_PUBLIC_KEY = '8f615b911b6092cc8a13';
@@ -17,10 +39,7 @@
 <script charset="utf-8" src="https://ucarecdn.com/widget/2.0.2/uploadcare/uploadcare.full.min.js"></script>
 <!-- end -->
 
-</head>
-<body>
-
-<%= yield %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 </body>
 </html>

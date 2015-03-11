@@ -22,11 +22,11 @@ class AccessController < ApplicationController
   end
 
   def logout
-    session[:user_id] = nil
-    render :logout
+    redirect_to landingpage
   end
 
-  private
+  private 
+
   def user_params
     params.require(:user).permit(:email, :password, :password_digest)
   end

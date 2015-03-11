@@ -20,25 +20,28 @@ ActiveRecord::Base.transaction do
   end
 end
 
-pocahontas = User.create(first_name: "Pocahontas", email: "complianceinfo@epa.gov", zipcode: 58401, password: "1234", company: false)
-reid = User.create(first_name: "Reid", last_name: "Lewis", email: "reidhlewis91@gmail.com", zipcode: 94107, password: "1234", company: false)
-colin = User.create(first_name: "Colin", last_name: "Craft", email: "colin@colincraft.com", zipcode: 94573, password: "1234", company: false)
-arebeth = User.create(first_name: "Arebeth", last_name: "Pease", email: "arebeth@herself.com", zipcode: 94619, password: "1234", company: false)
-christian = User.create(first_name: "Christian", last_name: "Chandler", email: "christian@himself.com", zipcode: 94805, password: "1234", company: false)
-george = User.create(first_name: "George", last_name: "Washington", email: "dafirst@america.com", zipcode: 10001, password: "1234", company: false)
-sacagawea = User.create(first_name: "Sacagawea", email: "sacagawea@guides.com", zipcode: 45845, password: "1234", company: false)
-abraham = User.create(first_name: "Abraham", last_name: "Lincoln", email: "luckysixteen@americannorth.com", zipcode: 42748, password: "1234", company: false)
-teddy = User.create(first_name: "Theodore", last_name: "Roosevelt", email: "roughrider@america.com", zipcode: 10004, password: "1234", company: false)
-franklin = User.create(first_name: "Franklin", last_name: "Roosevelt", email: "fdr@marchofdimes.com", zipcode: 12538, password: "1234", company: false)
-ron = User.create(first_name: "Ron", last_name: "Swanson", email: "dontemailme@antigov.com", zipcode: 46035, password: "1234", company: false)
+pocahontas = User.create(first_name: "Pocahontas", email: "complianceinfo@epa.gov", zipcode: "58401", password: "1234")
+reid = User.create(first_name: "Reid", last_name: "Lewis", email: "reidhlewis91@gmail.com", zipcode: "94107", password: "1234")
+colin = User.create(first_name: "Colin", last_name: "Craft", email: "colin@colincraft.com", zipcode: "94573", password: "1234")
+arebeth = User.create(first_name: "Arebeth", last_name: "Pease", email: "arebeth@herself.com", zipcode: "94619", password: "1234")
+christian = User.create(first_name: "Christian", last_name: "Chandler", email: "christian@himself.com", zipcode: "94805", password: "1234")
+george = User.create(first_name: "George", last_name: "Washington", email: "dafirst@america.com", zipcode: "10001", password: "1234")
+sacagawea = User.create(first_name: "Sacagawea", email: "sacagawea@guides.com", zipcode: "45845", password: "1234")
+abraham = User.create(first_name: "Abraham", last_name: "Lincoln", email: "luckysixteen@americannorth.com", zipcode: "42748", password: "1234")
+teddy = User.create(first_name: "Theodore", last_name: "Roosevelt", email: "roughrider@america.com", zipcode: "10004", password: "1234")
+franklin = User.create(first_name: "Franklin", last_name: "Roosevelt", email: "fdr@marchofdimes.com", zipcode: "12538", password: "1234")
+ron = User.create(first_name: "Ron", last_name: "Swanson", email: "dontemailme@antigov.com", zipcode: "46035", password: "1234")
 
-ga = User.create(first_name: "General Assembly", email: "ga.ga.co", zipcode:94117 , password: "1234", company: true)
-chobe = User.create(first_name: "Chobe Game Lodge", email: "chobegamelodge@botswana.org", zipcode:98776 , password: "1234", company: true)
+ga = User.create(first_name: "General Assembly", email: "ga.ga.co", zipcode: "94117", password: "1234")
+chobe = User.create(first_name: "Chobe Game Lodge", email: "chobegamelodge@botswana.org", zipcode: "98776" , password: "1234")
 
 pocahontas.gifts.create(title: "Woodland Knowledge", description: "I can teach you how to live off the land!", type_id: 1, category_id: 1)
 pocahontas.gifts.create(title: "English Help", description: "I'm looking for help learning the English language.", type_id: 2, category_id: 1)
 
-reid.gifts.create(title: "Pencil Sharpener", description: "I have a pencil sharpener to offer!", type_id: 1, category_id: 4)
+reid.gifts.create(title: "Pencil Sharpener", description: "I have a pencil sharpener to offer! Seriously. This thing. Is So. Blue. Like, you might
+ get lost in its blue when your sharpening, so be careful. Time flies (or I guess, swims. Tee hee hee) when you're sharpening fun! Oh! On another note:
+  don't oversharpen! This thing is like tooo good. You could seriously oversharpen your pencil if you get lost in the blue, and suddenly your flat, full
+   pencil is a razor sharp nub. Terrible, terrible times have happened.", type_id: 1, category_id: 4)
 reid.gifts.create(title: "Gardening Help", description: "I'm a novice gardener, looking for some help!", type_id: 2, category_id: 1)
 
 colin.gifts.create(title: "Wine", description: "I have a few extra bottles.", type_id: 1, category_id: 4)
