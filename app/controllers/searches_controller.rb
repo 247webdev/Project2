@@ -31,14 +31,13 @@ class SearchesController < ApplicationController
   end
 
   def resultsShow
-    category = categoryConverter params[:category]
-
+    category = category_converter params[:category]
     results = Gift.where(category_id: category)
     @users = results.map  { |result| result.user}
   end
 
   private
-  def categoryConverter param
+  def category_converter param
     if param == "service"
       return 1
     elsif param == "time"

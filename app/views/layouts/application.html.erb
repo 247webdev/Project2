@@ -3,9 +3,13 @@
 <head>
   <title>Project2</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
+
+</head>
+<body>
+
+<%= yield %>
 <!-- Widget config for Upload Care -->
 <script>
   UPLOADCARE_PUBLIC_KEY = '8f615b911b6092cc8a13';
@@ -17,10 +21,6 @@
 <script charset="utf-8" src="https://ucarecdn.com/widget/2.0.2/uploadcare/uploadcare.full.min.js"></script>
 <!-- end -->
 
-</head>
-<body>
-
-<%= yield %>
-
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>
