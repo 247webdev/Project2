@@ -58,9 +58,6 @@ class UsersController < ApplicationController
   def delete
   end
 
-  def search #search by category or location    
-  end
-
 end
 
 private

@@ -5,6 +5,18 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+<!-- Widget config for Upload Care -->
+<script>
+  UPLOADCARE_PUBLIC_KEY = '8f615b911b6092cc8a13';
+  UPLOADCARE_TABS = 'all';
+  UPLOADCARE_IMAGES_ONLY = true;
+  UPLOADCARE_PREVIEW_STEP = true;
+  UPLOADCARE_CLEARABLE = true;
+</script>
+<script charset="utf-8" src="https://ucarecdn.com/widget/2.0.2/uploadcare/uploadcare.full.min.js"></script>
+<!-- end -->
+
 </head>
 <body>
 
