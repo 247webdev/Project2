@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Project2</title>
+  <title>Good&amp;Co.</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
-
 </head>
 <body>
+  
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container" id="navcontainer">
+      
+      <p class="navbar-text navbar-left"><span>Good</span>&amp;Co.</p>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to("Search", controller: "searches", action: "index") %></li>
+        <% if session[:user_id] %>
+          <li><%= link_to("Profile", "/users/#{session[:user_id]}") %></li>
+          <li><%= link_to("Logout", controller: "access", action: "logout") %></li>
+        <% else %>
+          <li><%= link_to("Login", "/") %></li>
+        <% end %>
+      </ul>
+      
+    </div>
+  </nav>
+
 
 <%= yield %>
 <!-- Widget config for Upload Care -->
@@ -22,5 +40,6 @@
 <!-- end -->
 
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
 </body>
 </html>

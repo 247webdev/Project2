@@ -2,6 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  padding-top: 70px;
+}
+
+#navcontainer {
+  background-color: #F8F8F8;
+}
+
+.navbar-left {
+  font-size: 1.1em;
+  font-style: italic;
+}
+
+.navbar-left span {
+  font-style: normal;
+  font-weight: bold;
+  color: #191B1A;
+}
+
 .container {
   background-color: #DEEEE9;
 }
@@ -56,7 +75,7 @@
 .profilePageGiftCategoryImage img {
   margin-top: 20px;
   height: 100px;
-  width: 100px;
+
 }
 
 .radioButtons label {
@@ -79,4 +98,5 @@
 
 .updateGiftInformation p {
   margin-top: 20px;
+
 }

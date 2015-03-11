@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     
 
     if @user.save
-      
+      binding.pry
       newgive = @user.gifts.new
       newget = @user.gifts.new
 
@@ -44,9 +44,9 @@ class UsersController < ApplicationController
       newget.update(description: @get["description"])
       newget.update(type_id: 2)
       newget.update(category_id: @get["category_id"])
-      redirect_to users_path, notice: 'Success, your profile was created.'
+      redirect_to "/searches/index", notice: 'Success, your profile was created.'
     else
-      render :new
+      render "/users/new"
     end
   end
 
@@ -67,5 +67,5 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:id, :first_name, :last_name, :email, :zipcode,:password, :company, )
+    params.require(:user).permit(:id, :first_name, :last_name, :email, :zipcode,:password )
   end
