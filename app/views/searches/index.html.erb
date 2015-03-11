@@ -13,9 +13,32 @@
 <h1>Search Profiles</h1>
 
 <%= form_tag("/searches/results", method: "post", class: "form-inline") do %>
-  <%= text_field_tag(:category, nil, placeholder: "Category")%>
-  <%= text_field_tag(:radius, nil, placeholder: "Distance in miles")%>
-  <!-- make a drop down field with radius values of: up to 1 mile, 2,3,4,5,6,7,8,9,10,15,20,30,50, any -->
-  <%=  %>
+  What category of items are you interested in?&nbsp;
+<!--   < %= text_field_tag(:category, nil, placeholder: "Category")%>  I think it makes sense to make this a drop down. What do you think? -->
+  <%= select_tag(:category, options_for_select([
+      ['Time', "Time"],
+      ['Service', "Service"],
+      ['Money', "Money"],
+      ['Object', "Object"]
+     ], "Time")) %><br>
+  How far away can it be?&nbsp;
+  <%= select_tag(:radius, options_for_select([
+      ['Distance is not applicable', 5000], 
+      ['Up to 1 mile', 1], 
+      ['Up to 2 miles', 2], 
+      ['Up to 3 miles', 3], 
+      ['Up to 4 miles', 4], 
+      ['Up to 5 miles', 5], 
+      ['Up to 6 miles', 6], 
+      ['Up to 7 miles', 7], 
+      ['Up to 8 miles', 8], 
+      ['Up to 9 miles', 9], 
+      ['Up to 10 miles', 10], 
+      ['Up to 15 miles', 15], 
+      ['Up to 20 miles', 20], 
+      ['Up to 30 miles', 30], 
+      ['Up to 50 miles', 50]
+     ], 5000)) %><br>
+
   <%= submit_tag("Search") %>
 <% end %>
