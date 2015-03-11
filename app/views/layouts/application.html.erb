@@ -16,10 +16,23 @@
       <p class="navbar-text navbar-left"><span>Good</span>&amp;Co.</p>
       
       <ul class="nav navbar-nav navbar-right">
+        <% if !session[:user_id] %>
+          <li>
+            <%= form_tag(login_path, class: 'navbar-form navbar-left') do %>
+              <%= label_tag(:email) %>
+              <%= text_field_tag(:email, params[:email]) %>
+
+              <%= label_tag(:password) %>
+              <%= password_field_tag(:password, params[:password]) %>
+
+              <%= submit_tag("Login") %>
+            <% end %>
+          </li>
+        <% end %>
         <li><%= link_to("Search", controller: "searches", action: "index") %></li>
         <% if session[:user_id] %>
           <li><%= link_to("Profile", "/users/#{session[:user_id]}") %></li>
-          <li><%= link_to("Logout", controller: "access", action: "logout") %></li>
+          <li><%= link_to("Logout", logout_path, method: :delete) %></li>
         <% else %>
           <li><%= link_to("Login", "/") %></li>
         <% end %>
@@ -27,6 +40,17 @@
       
     </div>
   </nav>
+
+  <% flash.each do |key, value| %>
+  
+    <% if key == "notice" %>
+      <%= content_tag :div, value, class: "text-center alert alert-warning" %>
+    <% elsif key == "alert" %>
+      <%= content_tag :div, value, class: "text-center alert alert-danger" %>
+    <% else %>
+      <%= content_tag :div, value, class: "text-center alert alert-success" %>
+    <% end %>
+  <% end %>
 
 
 <%= yield %>
