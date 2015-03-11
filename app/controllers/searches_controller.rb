@@ -1,5 +1,3 @@
-require 'zipcode.rb'
-
 class SearchesController < ApplicationController
 
   def index
@@ -51,16 +49,22 @@ class SearchesController < ApplicationController
     binding.pry
 
     # Now check the zipcode of each gift within results is also within the validLocations. Map that back to results and there are the gifts withing the user's radius search.
-    results.map { |item| valid_locations.include? item.user.zipcode }
-    
-    @users = results.map  { |result| result.user}
+
+    # results.map { |item| valid_locations.include? item.user.zipcode }
+
+    users = results.map  { |result| result.user}
+
+    valid_locations.map! { |item| item[:zipcode] }
+
+    @users = users.map { |item| valid_locations.include? item.zipcode }
+
   end
 
   private
   def category_converter param
-    if param == "service"
+    if param == "time"
       return 1
-    elsif param == "time"
+    elsif param == "service"
       return 2
     elsif param == "money"
       return 3
