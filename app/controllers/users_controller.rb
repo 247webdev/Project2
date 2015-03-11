@@ -29,6 +29,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     @give = params["user"]["gifts_attributes"]["0"]
     @get = params["user"]["gifts_attributes"]["1"]
+    
 
     if @user.save
       
@@ -37,11 +38,11 @@ class UsersController < ApplicationController
 
       newgive.update(title: @give["title"])
       newgive.update(description: @give["description"])
-      newgive.update(type_id: @give["type_id"])
+      newgive.update(type_id: 1)
       newgive.update(category_id: @give["category_id"])
       newget.update(title: @get["title"])
       newget.update(description: @get["description"])
-      newget.update(type_id: @get["type_id"])
+      newget.update(type_id: 2)
       newget.update(category_id: @get["category_id"])
       redirect_to users_path, notice: 'Success, your profile was created.'
     else
