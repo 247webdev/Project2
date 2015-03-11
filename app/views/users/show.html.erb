@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= @user.first_name %></title>
+</head>
+<body>
+<div class="container">
+
+
 <p> <%= link_to "Home", "/users" %> | <%= link_to "About", "/about" %> | 
 <% if @user.id == session[:user_id] %>
   <%= link_to "Edit", edit_user_path(@user)%> |
@@ -8,31 +18,35 @@
  <%= link_to "Logout", "/logout" %>
 </p>
 
-<h1><%= @user.first_name %>'s Profile</h1>
+<h1 class = "showProfileName"><%= @user.first_name %>'s Profile</h1>
 
+<div class="profilePagePhoto center"></div>
+<h3 class = "profilePageName center"><%= @user.first_name %> <%= @user.last_name %></h3>
 
-<h2>What <%= @user.first_name %> can Give.</h2>
-<p>
-<% if @give.present? == true %>
-  <p>
-    <%= @give.title %>
-  </p>
-  <p>
-    <%= @give.description %>
-  </p>
+<div class="profilePageContent center">
+  <% if @give.present? == true %>
+  <h2 class = "profilePageGiftType">What <%= @user.first_name %> can Give.</h2>
   <p>
 
-  <% if @give.category_id == 1 %>
-    <p>This is time</p>
-  <% elsif @give.category_id == 2%>
-    <p>This is a service</p>
-  <% elsif @give.category_id == 3%>
-    <p>This is a donation</p>
-  <% elsif @give.category_id == 4%>
-    <p>This is a gift</p>
-  <% end %> 
+  <h3 class = "profilePageGiftTitle center"><%= @give.title %></h3>
   
-  </p>
+  <h4 class = "profilePageGiftDescription center">
+    <%= @give.description %>
+  </h4>
+  
+  <div class="profilePageGiftCategoryImage center">
+    <% if @give.category_id == 1 %>
+      <%= image_tag("service.png") %>
+    <% elsif @give.category_id == 2%>
+      <%= image_tag("time.png") %>
+    <% elsif @give.category_id == 3%>
+      <%= image_tag("money.png") %>
+    <% elsif @give.category_id == 4%>
+      <%= image_tag("object.png") %>
+    <% end %>
+  </div>
+
+
   <p>
     <a href="mailto:<%= @user.email %>">Contact <%= @user.first_name %></a>
   </p>
@@ -55,8 +69,34 @@
   <% elsif @get.category_id == 4%>
     <p>This is a gift</p>
     <% end %>
-<% end %>
+
+
+  <h2 class = "profilePageGiftType">What <%= @user.first_name %> would like to Get.</h2>
+  <h3 class = "profilePageGiftTitle center"><%= @get.title %></h3>
+  
+  <h4 class = "profilePageGiftDescription center">
+    <%= @get.description %>
+  </h4>
+
+  <div class="profilePageGiftCategoryImage center">
+    <% if @get.category_id == 1 %>
+      <%= image_tag("service.png") %>
+    <% elsif @get.category_id == 2%>
+      <%= image_tag("time.png") %>
+    <% elsif @get.category_id == 3%>
+      <%= image_tag("money.png") %>
+    <% elsif @get.category_id == 4%>
+      <%= image_tag("object.png") %>
+    <% end %>
+  </div>
+
   <p>
     <a href="mailto:<%= @user.email %>">Contact <%= @user.first_name %></a>
   </p>
-</p>
+  <% end %>
+  </p>
+</div>
+
+</div>
+</body>
+
