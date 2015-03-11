@@ -1,5 +1,3 @@
-require 'zipcode_search'
-
 class SearchesController < ApplicationController
 
   def index
