@@ -1,4 +1,4 @@
-require 'zipcode_search'
+require 'zipcode.rb'
 
 class SearchesController < ApplicationController
 
@@ -48,8 +48,10 @@ class SearchesController < ApplicationController
     # these are the gifts based on the category search
     results = Gift.where(category_id: category)
 
+    binding.pry
+
     # Now check the zipcode of each gift within results is also within the validLocations. Map that back to results and there are the gifts withing the user's radius search.
-    results.map { |item| valid_locations.include? item.zipcode }
+    results.map { |item| valid_locations.include? item.user.zipcode }
     
     @users = results.map  { |result| result.user}
   end

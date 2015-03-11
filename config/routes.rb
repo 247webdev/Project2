@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
   root "access#landingpage", as: :landingpage
   
-  get '/login', to: "access#login", as: 'login'
+  post '/access/login', to: "access#attempt_login", as: 'login'
 
   get 'access/landingpage'
+
+  delete '/logout', to: "access#logout", as: "logout"
 
   get 'searches/index'
 
@@ -18,7 +20,6 @@ Rails.application.routes.draw do
 
   patch "/users/:id/edit" => 'gifts#update', as: :gift
 
-  delete '/logout', to: "access#logout", as: "logout"
 end
 
 # From rake routes
