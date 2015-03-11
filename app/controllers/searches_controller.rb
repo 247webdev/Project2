@@ -5,10 +5,10 @@ class SearchesController < ApplicationController
 
   def results
     category = params[:category].downcase
-    @radius = params[:radius]
+    radius = params[:radius]
 
-    if (category == "time" || category == "service" || category == "money" || category == "object") && @radius
-      redirect_to action: "resultsShow", category: category, radius: @radius
+    if (category == "time" || category == "service" || category == "money" || category == "object") && radius
+      redirect_to action: "resultsShow", category: category, radius: radius
       # redirect_to "/searches/results/#{params[:category]}"
     else
       flash.now[:notice] = "Please enter a valid search term. (Your options are Time, Service, Money or Object.)"
@@ -32,33 +32,40 @@ class SearchesController < ApplicationController
   end
 
   def resultsShow
+    # the searched params
     category = category_converter params[:category]
-    @radius = 15
-    # this is the logged in user's zipcode, it is passed into the zip_code_perimeter_search as the foci zipcode
+    radius   = params[:radius]
 
-    # UNCOMMENT THIS ONCE SESSION login is complete
-    # zip = User.find_by_id(session[:user_id]).zipcode
-    zip = Zipcode.find_by_zipcode(User.find_by_id(1).zipcode) # this is test code until session[:user_id] is implemented. Comment this and uncomment above.
+    # Alex made this an instance of the Zipcode class which works for using the zip.perimeter_search call but, not needed from the approach of the data. Just need the zipcode of the user. I suppose it doesn't matter that it is an instance of the Zipcode class.
+    # Working inward out, this is the logged in user's ID, then find the user by that id, then get their zipcode, then finally find the Zipcode by the zipcode. Like I said above, seems redundant but allows the search to be called on zip. Would like to refactor later.
+    zip = Zipcode.find_by_zipcode(User.find_by_id(session[:user_id]).zipcode)
 
-    valid_locations = zip.perimeter_search(@radius)
-    # validLocations = :zip_code_perimeter_search(zip, @radius)
-    
+    #the array of zipcodes within the user's given radius
+    valid_locations = zip.perimeter_search(radius) # works! NOTE gives array of hashed objects
+
     # these are the gifts based on the category search
-    results = Gift.where(category_id: category)
+    results = Gift.where(category_id: category) # works! NOTE gives array of hashed objects
 
-    binding.pry
+    # remove any gifts related to the logged in user
+    filtered_results = results.reject { |item| item.user_id == session[:user_id] }
 
     # Now check the zipcode of each gift within results is also within the validLocations. Map that back to results and there are the gifts withing the user's radius search.
-
     # results.map { |item| valid_locations.include? item.user.zipcode }
 
-    users = results.map  { |result| result.user}
+    users = filtered_results.map { |result| result.user}
 
+    
+
+    valid_locations.map { |item| item[:zipcode] }
+
+    # @users = users.select { |item| valid_locations.include? item.zipcode }
+    @users = users.select do |user| 
+      valid_locations.each do |location|
+        location.zipcode == user.zipcode 
+      end
+    end
     binding.pry
-
-    valid_locations.map! { |item| item[:zipcode] }
-
-    @users = users.map { |item| valid_locations.include? item.zipcode }
+    # make sure to take out any gifts that belong to the logged in user before the 
 
   end
 
