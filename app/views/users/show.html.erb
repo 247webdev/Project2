@@ -24,9 +24,10 @@
 <h3 class = "profilePageName center"><%= @user.first_name %> <%= @user.last_name %></h3>
 
 <div class="profilePageContent center">
+
   <% if @give.present? == true %>
+
   <h2 class = "profilePageGiftType">What <%= @user.first_name %> can Give.</h2>
-  <p>
 
   <h3 class = "profilePageGiftTitle center"><%= @give.title %></h3>
   
