@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+
+  root "access#landingpage", as: :landingpage
+
   get 'access/landingpage'
 
   get 'searches/index'
+
 
   # get 'searches/results'
   post 'searches/results', to: "searches#results"
