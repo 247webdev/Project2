@@ -44,12 +44,12 @@ ActiveRecord::Schema.define(version: 20150311182034) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.integer  "zipcode"
+    t.string   "zipcode",         limit: 5
     t.string   "password"
     t.string   "password_digest"
     t.boolean  "company"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "profile_pic"
   end
 

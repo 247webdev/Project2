@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :prevent_login_signup, only: [:new, :create]
+
   def index #for general search by non-validated users
   end
 
@@ -18,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    
     @user = User.find(params[:id])
     @gift = @user.gifts
     @give = @gift.find_by(type_id: 1)
@@ -59,7 +63,6 @@ class UsersController < ApplicationController
   def delete
   end
 
-end
 
 private
   def gift_params
@@ -70,6 +73,12 @@ private
     params.require(:user).permit(:id, :first_name, :last_name, :email, :zipcode,:password)
   end
 
-  def profile_pic
-    params.require(:user).permit(:uploadcare)
+  #see if the user is logged in and if so redirect them back to home
+  def prevent_login_signup
+    if session[:user_id]
+      redirect_to home_path
+    end
   end
+
+end
+
