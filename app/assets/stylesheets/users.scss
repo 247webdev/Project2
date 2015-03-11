@@ -19,10 +19,6 @@ body {
   color: #191B1A;
 }
 
-.container {
-
-}
-
 .center {
   margin: 0 auto;
   text-align: center;
@@ -74,11 +70,6 @@ body {
   margin-top: 20px;
   height: 100px;
 
-}
-
-textarea, input {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-align: center;
 }
 
 .radioButton {
@@ -143,4 +134,17 @@ textarea, input {
 }
 .navcontainer {
   background-color: #F8F8F8;
+}
+.before-page{
+  margin-top: 90px;
+}
+.new-form{
+  padding-top: 50px;
+}
+.image-preview-single{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.form-style{
+  text-align: left;
 }

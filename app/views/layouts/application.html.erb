@@ -12,9 +12,9 @@
   
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container" class="navcontainer">
-      
+      <a href="/">
       <p class="navbar-text navbar-left"><span>Good</span>&amp;Co.</p>
-      
+      </a>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to("Search", controller: "searches", action: "index") %></li>
         <% if session[:user_id] %>
