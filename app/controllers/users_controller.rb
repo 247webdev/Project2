@@ -27,12 +27,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new user_params
+    @user.update(profile_pic: params[:uploadcare])
     @give = params["user"]["gifts_attributes"]["0"]
     @get = params["user"]["gifts_attributes"]["1"]
-    
+    binding.pry
 
     if @user.save
-      binding.pry
       newgive = @user.gifts.new
       newget = @user.gifts.new
 
@@ -67,5 +67,9 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:id, :first_name, :last_name, :email, :zipcode,:password )
+    params.require(:user).permit(:id, :first_name, :last_name, :email, :zipcode,:password)
+  end
+
+  def profile_pic
+    params.require(:user).permit(:uploadcare)
   end
