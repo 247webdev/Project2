@@ -35,18 +35,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new user_params
+    @user.gifts[0].type_id = 1
+    @user.gifts[1].type_id = 2
     @user.update(profile_pic: params[:uploadcare])
-    give = params[:user][:gifts_attributes]["0"]
-    get = params[:user][:gifts_attributes]["1"]
-    @give = @user.gifts.build(title: give[:title], description: give[:description], category: give[:category])
-    @get = @user.gifts.build(title: get[:title], description: get[:description], category: get[:category])
 
-
-    if @user.save && @give.save
+    if @user.save
       session[:user_id] = @user.id
-      binding.pry
-      @get.save
-      redirect_to "/searches/index", notice: "Success, your profile was created."
+      redirect_to search_path, notice: "Success, your profile was created."
     else
       @user.destroy
       flash[:alert] = @user.errors.full_messages.join(", ")
@@ -69,20 +64,9 @@ class UsersController < ApplicationController
 
 
 private
-  def gift_params
-    params.require(:gift).permit(:id, :title, :description )
-  end
 
   def user_params
-    params.require(:user).permit(:id, :first_name, :last_name, :email, :zipcode, :password, :password_digest)
-  end
-
-  def give_params
-    params.require(:user).permit(:gifts_attributes["0"])
-  end
-
-  def get_params
-    params.require(:user).permit(:gifts_attributes["1"])
+    params.require(:user).permit(:id, :first_name, :last_name, :email, :zipcode, :password, :password_digest, gifts_attributes: [:title, :description, :category_id])
   end
 
   def invalid_edit id
