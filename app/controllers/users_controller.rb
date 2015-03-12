@@ -37,9 +37,10 @@ class UsersController < ApplicationController
     @user.update(profile_pic: params[:uploadcare])
     @give = params["user"]["gifts_attributes"]["0"]
     @get = params["user"]["gifts_attributes"]["1"]
-    binding.pry
+
 
     if @user.save
+
       newgive = @user.gifts.new
       newget = @user.gifts.new
 
