@@ -20,7 +20,7 @@ body{
   padding-top: 50px;
 }
  .hero-image{
-  background-image: url('7904721504_8e9c6caa06_b.jpg');
+  background-image: url('<%= asset_path('7904721504_8e9c6caa06_b.jpg') %>');
   background-size: cover;
   background-repeat: no-repeat;
   height: 750px;
@@ -90,10 +90,10 @@ border-color: white;
 border-radius: 30px;
 }
 .give-info{
-  background-image: url('6192694461_2c74b2ba1a_o.jpg')
+  background-image: url('<%= asset_path('6192694461_2c74b2ba1a_o.jpg') %>');
 }
 .get-info{
-  background-image: url('160H.jpg') 
+  background-image: url('<%= asset_path('160H.jpg') %>');
 }
 
 .special-padding-for-info-boxes{
@@ -102,10 +102,10 @@ border-radius: 30px;
   font-family: Lato, sans-serif;
 }
 .give-special-info{
-  background-image: url('7051197255_13c8dabe24_h.jpg')
+  background-image: url('<%= asset_path('7051197255_13c8dabe24_h.jpg')%>');
 }
 .get-special-info{
-  background-image: url('15434712898_5dde04cc28_b.jpg')
+  background-image: url('<%= asset_path('15434712898_5dde04cc28_b.jpg')%>');
 }
 .overflow-hide{
   overflow: hidden;
@@ -165,7 +165,7 @@ border-radius: 30px;
 
 }
 .uploadcare-widget-button-open{
-  background-image: url('add_profile_pic.png');
+  background-image: url('<%= asset_path('add_profile_pic.png')%>');
   height: 174px;
   width: 174px;
   padding-top: 45px;
@@ -176,9 +176,170 @@ border-radius: 30px;
 
 }
 .uploadcare-widget-button-open:hover{
-  background-image: url('add_profile_pic_transition.png');
+  background-image: url('<%= asset_path('add_profile_pic_transition.png')%>');
   background-size: cover;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
   cursor: pointer;
+
+}
+
+
+
+
+.navbar-left {
+  font-size: 1.1em;
+  font-style: italic;
+}
+
+.navbar-left span {
+  font-style: normal;
+  font-weight: bold;
+  color: #191B1A;
+}
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.showProfileName {
+  text-align: center;
+}
+
+.profilePagePhoto {
+  width: 200px;
+  height: 200px;
+  background: teal;
+  border: 10px solid white;
+  border-radius: 100px;
+  margin: 0 auto;
+}
+
+.profilePageGiftTitle, .profilePageName {
+  background-color: white;
+  border-radius: 5px;
+  width: 300px;
+  padding: 15px;
+}
+
+.profilePageGiftTitle {
+  margin-top: 20px;
+}
+
+.profilePageName {
+  margin-top: 20px;
+  padding: 15px;
+}
+
+.profilePageGiftType {
+  padding-top: 40px;
+}
+
+/*.profilePageGiftType:first-child {
+  padding-top: 70px;
+}*/
+
+.profilePageGiftDescription {
+  background-color: white;
+  border-radius: 5px;
+  width: 80%;
+  margin-top: 20px;
+  padding: 15px;
+
+}
+
+.profilePageGiftCategoryImage img {
+  margin-top: 20px;
+  height: 100px;
+
+}
+
+.radioButton {
+  display: inline-block;
+  text-align: center;
+  margin: 10px;
+}
+
+.radioButton label {
+  display: block;
+}
+
+.updateUserInformation {
+  margin-top: 30px;
+}
+
+.updateGiftInformation {
+  margin-top: 50px;
+}
+
+#gift_category_id_1,
+#user_gifts_attributes_0_category_id_1,
+#user_gifts_attributes_1_category_id_1 {
+  background-image: url('<%= asset_path('time.png')%>');
+  -webkit-appearance: none;
+  width: 120px;
+  height: 100px;
+  background-size: 120px 100px;
+}
+
+#gift_category_id_2,
+#user_gifts_attributes_0_category_id_2,
+#user_gifts_attributes_1_category_id_2 {
+  background-image: url('<%= asset_path('service.png')%>');
+  -webkit-appearance: none;
+  width: 120px;
+  height: 100px;
+  background-size: 120px 100px;
+}
+
+#gift_category_id_3,
+#user_gifts_attributes_0_category_id_3,
+#user_gifts_attributes_1_category_id_3 {
+  background-image: url('<%= asset_path('money.png')%>');
+  -webkit-appearance: none;
+  width: 120px;
+  height: 100px;
+  background-size: 120px 100px;
+}
+
+#gift_category_id_4,
+#user_gifts_attributes_0_category_id_4,
+#user_gifts_attributes_1_category_id_4 {
+  background-image: url('<%= asset_path('object.png')%>');
+  -webkit-appearance: none;
+  width: 120px;
+  height: 100px;
+  background-size: 120px 100px;
+}
+
+
+.updateGiftInformation img {
+  height: 100px;
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.updateGiftInformation p {
+  margin-top: 20px;
+}
+.navcontainer {
+  background-color: #F8F8F8;
+}
+.before-page{
+  margin-top: 90px;
+}
+.new-form{
+  padding-top: 50px;
+}
+.image-preview-single{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.form-style{
+  text-align: left;
+}
+ 
+.input-fields-style input{
+  width: 100%;
 
 }

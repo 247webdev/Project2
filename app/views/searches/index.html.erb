@@ -1,40 +1,55 @@
 <!-- nav bar partial -->
 <div class="container text-center page-background-color">
 <h1>Search Profiles</h1>
-<div class="row">
+
 <%= form_tag("/searches/results", method: "post", class: "form-inline") do %>
 
-<div class="col-md-6">
-  What category of items are you interested in?&nbsp;
-<!--   < %= text_field_tag(:category, nil, placeholder: "Category")%>  I think it makes sense to make this a drop down. What do you think? -->
-  <%= select_tag(:category, options_for_select([
-      ['Time', "Time"],
-      ['Service', "Service"],
-      ['Money', "Money"],
-      ['Object', "Object"]
-     ], "Time")) %><br>
-</div>
-<div class="col-md-6">
-  How far away can it be?&nbsp;
-  <%= select_tag(:radius, options_for_select([
-      ['Distance is not applicable', 5000], 
-      ['Up to 1 mile', 1], 
-      ['Up to 2 miles', 2], 
-      ['Up to 3 miles', 3], 
-      ['Up to 4 miles', 4], 
-      ['Up to 5 miles', 5], 
-      ['Up to 6 miles', 6], 
-      ['Up to 7 miles', 7], 
-      ['Up to 8 miles', 8], 
-      ['Up to 9 miles', 9], 
-      ['Up to 10 miles', 10], 
-      ['Up to 15 miles', 15], 
-      ['Up to 20 miles', 20], 
-      ['Up to 30 miles', 30], 
-      ['Up to 50 miles', 50]
-     ], 5000)) %><br>
-</div>
-  <%= submit_tag("Search") %>
+  <% unless session[:user_id] %>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        What is your ZIP code?&nbsp;
+        <%= text_field_tag(:zipcode, nil, placeholder: "Your Zip Code")%>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6">
+      What category of items are you interested in?&nbsp;
+      <%= select_tag(:category, options_for_select([
+          ['Time', "Time"],
+          ['Service', "Service"],
+          ['Money', "Money"],
+          ['Object', "Object"]
+         ], "Time")) %><br>
+    </div>
+    <div class="col-md-6">
+      How far away can it be?&nbsp;
+      <%= select_tag(:radius, options_for_select([
+          ['Distance is not applicable', 5000], 
+          ['Up to 1 mile', 1], 
+          ['Up to 2 miles', 2], 
+          ['Up to 3 miles', 3], 
+          ['Up to 4 miles', 4], 
+          ['Up to 5 miles', 5], 
+          ['Up to 6 miles', 6], 
+          ['Up to 7 miles', 7], 
+          ['Up to 8 miles', 8], 
+          ['Up to 9 miles', 9], 
+          ['Up to 10 miles', 10], 
+          ['Up to 15 miles', 15], 
+          ['Up to 20 miles', 20], 
+          ['Up to 30 miles', 30], 
+          ['Up to 50 miles', 50]
+          ], 7000)) %><br>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= submit_tag("Search") %>
+    </div>
+  </div>
+
 <% end %>
-</div>
 </div>

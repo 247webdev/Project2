@@ -86,6 +86,16 @@
     <p><%= builder.text_field :title %></p>
     <h3><small><%= builder.label :description, "Description" %></small></h3>
     <p><%= builder.text_area :description, rows: 5, cols: 70 %></p>
+
+
+
+    <% if builder.index == 0 %>
+    <h1><small>Choose a category for your give:</small></h1>
+    <% else %>
+    <h1><small>Choose a category for your get:</small></h1>
+    <% end %>
+
+
     <div class="radioButtons">
     <div class="radioButton">
     <%= builder.radio_button :category_id, 1 %>
