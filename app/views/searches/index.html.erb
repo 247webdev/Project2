@@ -1,8 +1,10 @@
 <!-- nav bar partial -->
-
+<div class="container text-center page-background-color">
 <h1>Search Profiles</h1>
-
+<div class="row">
 <%= form_tag("/searches/results", method: "post", class: "form-inline") do %>
+
+<div class="col-md-6">
   What category of items are you interested in?&nbsp;
 <!--   < %= text_field_tag(:category, nil, placeholder: "Category")%>  I think it makes sense to make this a drop down. What do you think? -->
   <%= select_tag(:category, options_for_select([
@@ -11,6 +13,8 @@
       ['Money', "Money"],
       ['Object', "Object"]
      ], "Time")) %><br>
+</div>
+<div class="col-md-6">
   How far away can it be?&nbsp;
   <%= select_tag(:radius, options_for_select([
       ['Distance is not applicable', 5000], 
@@ -29,6 +33,8 @@
       ['Up to 30 miles', 30], 
       ['Up to 50 miles', 50]
      ], 5000)) %><br>
-
+</div>
   <%= submit_tag("Search") %>
 <% end %>
+</div>
+</div>
