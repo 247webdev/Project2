@@ -25,8 +25,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'better_errors'
-gem 'binding_of_caller
-'
+gem 'binding_of_caller'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
@@ -36,6 +35,8 @@ gem 'pry-rails'
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 
+gem 'nokogiri'
+gem 'rack', '~>1.1'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -49,7 +50,7 @@ group :development, :test do
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
+  gem 'rspec', :require => 'spec'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
