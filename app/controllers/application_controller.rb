@@ -13,4 +13,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def no_log_show
+    if !session[:user_id]
+      flash[:notice] = "Please log in or sign up!"
+      redirect_to "/"
+    end
+  end
 end

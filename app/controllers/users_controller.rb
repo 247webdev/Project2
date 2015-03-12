@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :prevent_login_signup, only: [:new, :create]
+  before_action :no_log_show, only: [:edit, :show]
   before_action only: :edit do
     invalid_edit params[:id]
   end
