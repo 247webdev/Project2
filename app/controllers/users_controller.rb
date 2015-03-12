@@ -59,7 +59,7 @@ class UsersController < ApplicationController
     User.destroy(session[:user_id])
     session[:user_id] = nil
     flash[:notice] = "You deleted your account."
-    redirect_to root
+    redirect_to '/'
   end
 
 
