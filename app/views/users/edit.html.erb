@@ -22,7 +22,7 @@
 
     <h2 class = "updateTitle">Update your Give</h2>
     
-    <%= form_for @give do |f| %>
+    <%= form_for @give, action: "/users/#{@user.id}/gift" do |f| %>
       
       <p><%= f.text_field :title %></p>
       <p><%= f.text_area :description, rows: 5, cols: 70%></p>
@@ -57,7 +57,7 @@
 
     <h2 class="updateTitle">Update your Get</h2>
     
-    <%= form_for @get do |f| %>
+    <%= form_for @get, action: "/users/#{@user.id}/gift" do |f| %>
       <p><%= f.text_field :title %></p>
       <p><%= f.text_area :description, rows: 5, cols: 70 %></p>
       <h1><small>Choose a category for your get:</small></h1>

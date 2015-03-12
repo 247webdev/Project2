@@ -10,14 +10,6 @@
 <div class="container text-center new-form">
 
   <%= form_for @user do |f| %>
-
-  <% if @user.errors.any? %>
-  <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
-  <% end %>
   
   <div class="row">
     <!-- Within Bootstrap, tab trigger this on Personal tab -->
@@ -64,7 +56,7 @@
         <%= f.label :zipcode %>:
         </div>
         <div class="col-lg-8 input-fields-style">
-        <%= f.text_field(:zipcode) %>
+        <%= f.text_field(:zipcode, required: true) %>
         </div>
         </div>
       </p>
