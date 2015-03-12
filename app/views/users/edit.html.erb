@@ -19,9 +19,11 @@
     <p><%= f.text_field :last_name %></p>
     <p><%= f.text_field :email %></p>
     <p><%= f.text_field :zipcode %></p>
-    <%= f.submit %>
+    <%= f.submit %>&nbsp;<%= link_to "Detele", user_path(@user), method: "delete", class:"btn btn-danger" %>
+
   <% end %>
-</div>
+
+  </div>
 <!-- What the user can give -->
 <div class="profilePageContent center">
 

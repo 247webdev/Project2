@@ -37,10 +37,10 @@ class SearchesController < ApplicationController
     radius   = params[:radius]
 
     # Alex made this an instance of the Zipcode class which works for using the zip.perimeter_search call but, not needed from the approach of the data. Just need the zipcode of the user. I suppose it doesn't matter that it is an instance of the Zipcode class.
-    # Working inward out, this is the logged in user's ID, then find the user by that id, then get their zipcode, then finally find the Zipcode by the zipcode. Like I said above, seems redundant but allows the search to be called on zip. Would like to refactor later.
+    # Describing this inward out, this is the logged in user's ID, then find the user by that id, then get their zipcode, then finally find the Zipcode by the zipcode. Like I said above, seems redundant but allows the search to be called on zip. Would like to refactor later.
     zip = Zipcode.find_by_zipcode(User.find_by_id(session[:user_id]).zipcode)
 
-    #the array of zipcodes within the user's given radius
+    # the array of zipcodes within the user's given radius
     valid_locations = zip.perimeter_search(radius) # works! NOTE gives array of hashed objects
 
     # these are the gifts based on the category search
@@ -50,21 +50,15 @@ class SearchesController < ApplicationController
     filtered_results = results.reject { |item| item.user_id == session[:user_id] }
 
     # Now check the zipcode of each gift within results is also within the validLocations. Map that back to results and there are the gifts withing the user's radius search.
-    # results.map { |item| valid_locations.include? item.user.zipcode }
-
     users = filtered_results.map { |result| result.user}
-
-    
 
     valid_locations.map { |item| item[:zipcode] }
 
-    # @users = users.select { |item| valid_locations.include? item.zipcode }
     @users = users.select do |user| 
       valid_locations.each do |location|
         location.zipcode == user.zipcode 
       end
     end
-    # make sure to take out any gifts that belong to the logged in user before the 
 
   end
 
