@@ -27,17 +27,19 @@ class AccessController < ApplicationController
     end
   end
 
-  def delete
-    # current_user = User.find_by_id( session[:user_id] )
-    # current_user.destroy
+  # def delete
+  #   # current_user = User.find_by_id( session[:user_id] )
+  #   # current_user.destroy
 
-    # does this refactor work?
-    User.find_by_id( session[:user_id] ).destroy
+  #   # User.find_by_id( session[:user_id] ).destroy
+  #   # User.find( session[:user_id] ).destroy
 
-    session[:user_id] = nil
-    flash[:notice] = "You have deleted your account."
-    redirect_to "/"
-  end
+  #   User.destroy(session[:user_id])
+
+  #   session[:user_id] = nil
+  #   flash[:notice] = "You have deleted your account."
+  #   redirect_to "/"
+  # end
 
   def logout
     session[:user_id] = nil

@@ -1,13 +1,13 @@
 <!-- coming from resultsShow.html.erb -->
 <div class="container page-background-color">
-<div class="row search-results-header">
+  <div class="row search-results-header">
     <div class="col-md-2">
       <a href="/searches/index">
         <p class="text-center">Back to Search</p>
       </a>
     </div>
     <div class="col-md-8 text-center">
-    <h1>Search Results</h1>
+      <h1>Search Results</h1>
     </div>
     <div class="col-md-2">
     </div>
@@ -15,51 +15,51 @@
 </div>
 <div class="flex-container container page-background-color">
 
-<% @users.each do |user| %>
-<a href="/users/<%= user.id %>">
-<div class="flex-items-default text-center">
-<div class="profilePagePhoto center" style="background-image: url(<%= user.profile_pic %>); background-size: cover; background-position:center;"></div>
-<h1>
-  <%= user.first_name %>
-</h1>
+  <% @users.each do |user| %>
+  <a href="/users/<%= user.id %>">
+    <div class="flex-items-default text-center">
+      <div class="profilePagePhoto center" style="background-image: url(<%= user.profile_pic %>); background-size: cover; background-position:center;"></div>
+      <h1>
+        <%= user.first_name %>
+      </h1>
 
-<div>
-  <h3>
-    Give 
-    <small> 
-    <% if user.gifts.find_by_type_id(1).category_id == 1 %>
-      Time
-    <% elsif user.gifts.find_by_type_id(1).category_id == 2 %>
-      Service
-    <% elsif user.gifts.find_by_type_id(1).category_id == 3 %>
-      Donation
-    <% elsif user.gifts.find_by_type_id(1).category_id == 4 %>
-      Object
-    <% end %>
-    </small>
-  </h3>
-  <p>
-    <%= user.gifts.find_by_type_id(1).title %>
-  </p>
-  <h3>
-    Get
-    <small> 
-    <% if user.gifts.find_by_type_id(2).category_id == 1 %>
-      Time
-    <% elsif user.gifts.find_by_type_id(2).category_id == 2 %>
-      Service
-    <% elsif user.gifts.find_by_type_id(2).category_id == 3 %>
-      Donation
-    <% elsif user.gifts.find_by_type_id(2).category_id == 4 %>
-      Object
-    <% end %>
-    </small>
-  </h3>
-  <p>
-    <%= user.gifts.find_by_type_id(2).title %>
-  </p>
-</div>
-</div>
-</a>
-<% end %>
+      <div>
+        <h3>
+          Give 
+          <small> 
+            <% if user.gifts.find_by_type_id(1).category_id == 1 %>
+            Time
+            <% elsif user.gifts.find_by_type_id(1).category_id == 2 %>
+            Service
+            <% elsif user.gifts.find_by_type_id(1).category_id == 3 %>
+            Donation
+            <% elsif user.gifts.find_by_type_id(1).category_id == 4 %>
+            Object
+            <% end %>
+          </small>
+        </h3>
+        <p>
+          <%= user.gifts.find_by_type_id(1).title %>
+        </p>
+        <h3>
+          Get
+          <small> 
+            <% if user.gifts.find_by_type_id(2).category_id == 1 %>
+            Time
+            <% elsif user.gifts.find_by_type_id(2).category_id == 2 %>
+            Service
+            <% elsif user.gifts.find_by_type_id(2).category_id == 3 %>
+            Donation
+            <% elsif user.gifts.find_by_type_id(2).category_id == 4 %>
+            Object
+            <% end %>
+          </small>
+        </h3>
+        <p>
+          <%= user.gifts.find_by_type_id(2).title %>
+        </p>
+      </div>
+    </div>
+  </a>
+  <% end %>
 </div>

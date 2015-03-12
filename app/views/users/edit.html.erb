@@ -9,8 +9,7 @@
     <p><%= f.text_field :last_name %></p>
     <p><%= f.text_field :email %></p>
     <p><%= f.text_field :zipcode %></p>
-    <%= f.submit %>&nbsp;<%= link_to "Detele", user_path(@user), method: "delete", class:"btn btn-danger" %>
-
+    <%= f.submit class:"general-button" %>&nbsp;<%= link_to "Delete", user_path(@user), method: "delete", class:"general-button delete-button" %>
   <% end %>
 
   </div>
@@ -22,7 +21,7 @@
 
     <h2 class = "updateTitle">Update your Give</h2>
     
-    <%= form_for @give do |f| %>
+    <%= form_for @give, action: "/users/#{@user.id}/gift" do |f| %>
       
       <p><%= f.text_field :title %></p>
       <p><%= f.text_area :description, rows: 5, cols: 70%></p>
@@ -46,7 +45,7 @@
         </div>
       </div>
 
-      <%= f.submit %>
+      <%= f.submit class:"general-button" %>
 
     <% end %> 
   </div>
@@ -57,7 +56,7 @@
 
     <h2 class="updateTitle">Update your Get</h2>
     
-    <%= form_for @get do |f| %>
+    <%= form_for @get, action: "/users/#{@user.id}/gift" do |f| %>
       <p><%= f.text_field :title %></p>
       <p><%= f.text_area :description, rows: 5, cols: 70 %></p>
       <h1><small>Choose a category for your get:</small></h1>
@@ -80,10 +79,11 @@
         </div>
       </div>
 
-      <%= f.submit %>
+      <%= f.submit class:"general-button" %>
     <% end %>
   </div>
-
   </div>
-
+  <br>
+  
 </div>
+

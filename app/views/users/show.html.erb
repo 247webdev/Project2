@@ -11,27 +11,27 @@
 
   <h3 class = "profilePageGiftTitle center"><%= @give.title %></h3>
   <!-- See if we should type out category name instead of picture -->
-        <!-- <h3 class = "center"><small><%= @give.category_id %></small></h3> -->
+   <div class="profilePageGiftCategoryImage center">
+    <% if @give.category_id == 1 %>
+      <h3><small>Service</small></h3>
+    <% elsif @give.category_id == 2%>
+        <h3><small>Time</small></h3>
+    <% elsif @give.category_id == 3%>
+      <h3><small>Donation</small></h3>
+    <% elsif @give.category_id == 4%>
+      <h3><small>Gift</small></h3>
+    <% end %>
+  </div>
   <!--  -->
   <h4 class = "profilePageGiftDescription center">
     <%= @give.description %>
   </h4>
   
-  <div class="profilePageGiftCategoryImage center">
-    <% if @give.category_id == 1 %>
-      <%= image_tag("service.png") %>
-    <% elsif @give.category_id == 2%>
-      <%= image_tag("time.png") %>
-    <% elsif @give.category_id == 3%>
-      <%= image_tag("money.png") %>
-    <% elsif @give.category_id == 4%>
-      <%= image_tag("object.png") %>
-    <% end %>
-  </div>
+ 
 
 
   <form action="mailto:<%= @user.email %>">
-  <button>Contact <%= @user.first_name %></button>
+    <button class="general-button">Contact <%= @user.first_name %></button>
   </form>
 <% end %>
 
@@ -39,24 +39,25 @@
 
   <h2 class = "profilePageGiftType">What <%= @user.first_name %> would like to Get.</h2>
   <h3 class = "profilePageGiftTitle center"><%= @get.title %></h3>
+   <div class="profilePageGiftCategoryImage center">
+    <% if @give.category_id == 1 %>
+      <h3><small>Service</small></h3>
+    <% elsif @give.category_id == 2%>
+        <h3><small>Time</small></h3>
+    <% elsif @give.category_id == 3%>
+      <h3><small>Donation</small></h3>
+    <% elsif @give.category_id == 4%>
+      <h3><small>Gift</small></h3>
+    <% end %>
+  </div>
   
   <h4 class = "profilePageGiftDescription center">
     <%= @get.description %>
   </h4>
 
-  <div class="profilePageGiftCategoryImage center">
-    <% if @get.category_id == 1 %>
-      <%= image_tag("service.png") %>
-    <% elsif @get.category_id == 2%>
-      <%= image_tag("time.png") %>
-    <% elsif @get.category_id == 3%>
-      <%= image_tag("money.png") %>
-    <% elsif @get.category_id == 4%>
-      <%= image_tag("object.png") %>
-    <% end %>
-  </div>
+
   <form action="mailto:<%= @user.email %>">
-  <button>Contact <%= @user.first_name %></button>
+  <button class="general-button">Contact <%= @user.first_name %></button>
   </form>
   <% end %>
   </p>
