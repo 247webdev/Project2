@@ -53,7 +53,7 @@ class UsersController < ApplicationController
       newget.update(description: @get["description"])
       newget.update(type_id: 2)
       newget.update(category_id: @get["category_id"])
-      redirect_to "/searches/index", flash[:notice] = "Success, your profile was created."
+      redirect_to "/searches/index", notice: "Success, your profile was created."
     else
       render "/users/new"
     end
