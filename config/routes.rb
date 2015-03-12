@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  patch "/users/:id/edit" => 'gifts#update', as: :gift
+  patch "/users/:id/gift" => 'gifts#update', as: :gift
 
 end
 
