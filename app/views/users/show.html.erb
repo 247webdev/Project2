@@ -1,14 +1,4 @@
 <div class="container">
-
-
-<p> <%= link_to "Home", "/users" %> | <%= link_to "About", "/about" %> | 
-<% if @user.id == session[:user_id] %>
-  <%= link_to "Edit", edit_user_path(@user)%> |
-<% end %> 
-  
-
-
- <%= link_to "Logout", "/logout" %>
 </p>
 
 <h1 class = "showProfileName"><%= @user.first_name %>'s Profile</h1>
