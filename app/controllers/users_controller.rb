@@ -72,7 +72,7 @@ private
   def invalid_edit id
     if session[:user_id].to_s != id
       flash[:notice] = "You may only edit your user page"
-      redirect_to "/users/#{session[:user_id]}"
+      redirect_to '/'
     end
   end
 
