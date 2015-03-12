@@ -64,7 +64,6 @@ class SearchesController < ApplicationController
         location.zipcode == user.zipcode 
       end
     end
-    binding.pry
     # make sure to take out any gifts that belong to the logged in user before the 
 
   end
