@@ -59,7 +59,7 @@ class UsersController < ApplicationController
     User.destroy(session[:user_id])
     session[:user_id] = nil
     flash[:notice] = "You deleted your account."
-    redirect_to '/'
+    redirect_to landingpage_path
   end
 
 private
@@ -75,7 +75,7 @@ private
   def invalid_edit id
     if session[:user_id].to_s != id
       flash[:notice] = "You may only edit your user page"
-      redirect_to "/users/#{session[:user_id]}"
+      redirect_to '/'
     end
   end
 
