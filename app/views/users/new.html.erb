@@ -10,14 +10,6 @@
 <div class="container text-center new-form">
 
   <%= form_for @user do |f| %>
-
-  <% if @user.errors.any? %>
-  <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
-  <% end %>
   
   <div class="row">
     <!-- Within Bootstrap, tab trigger this on Personal tab -->
@@ -64,7 +56,7 @@
         <%= f.label :zipcode %>:
         </div>
         <div class="col-lg-8 input-fields-style">
-        <%= f.text_field(:zipcode) %>
+        <%= f.text_field(:zipcode, required: true) %>
         </div>
         </div>
       </p>
@@ -87,7 +79,7 @@
     <% if builder.index == 0 %>
     <h1>What can you Give?</h1>
     <% else %>
-    <h1>What would you like to Get?<small> (totally optional).</h1>
+    <h1>What would you like to Get?<small><br>(totally optional).</h1>
     <% end %>
 
     <h3><%= builder.label :title, "Title" %></h3>
@@ -107,26 +99,26 @@
     <div class="radioButtons">
     <div class="radioButton">
     <%= builder.radio_button :category_id, 1 %>
-    <%= builder.label :category_id, "I am time" %> 
+    <%= builder.label :category_id, "Time" %> 
     </div>
     <div class="radioButton">
     <%= builder.radio_button :category_id, 2 %>
-    <%= builder.label :category_id, "I am a service" %>
+    <%= builder.label :category_id, "Service" %>
     </div>
     <div class="radioButton">
     <%= builder.radio_button :category_id, 3 %>
-    <%= builder.label :category_id, "I am a donation" %>
+    <%= builder.label :category_id, "Donation" %>
     </div>
     <div class="radioButton">
     <%= builder.radio_button :category_id, 4 %>
-    <%= builder.label :category_id, "I am a gift" %>
+    <%= builder.label :category_id, "Gift" %>
     </div>
     </div>
     <% end %>
   </p>
 
-  <p>
-    <%= f.submit "Create Profile"%>
+  <p class>
+    <%= f.submit "Create Profile", class:"general-button"%>
   </p>
 
 </div>

@@ -15,11 +15,45 @@
  */
 
  @import "bootstrap";
+.about-heading {
+  padding: 10;
+  text-align: center;
+}
+.about-heading button {
+  margin: 10px 0 25px 0;
+  padding: 5px 30px;
+  font-family: Lato;
+  font-size: 15px;
+  line-height: 1.428571429;
+  border-color: white;
+  border-radius: 30px;
+  color: white;
+  background-color: #5482d3;
+}
 body{
   font-family: Montserrat, sans-serif;
   padding-top: 50px;
 }
- .hero-image{
+.carousel-inner {
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+}
+.carousel-inner button {
+  margin: 10px 0 25px 0;
+  padding: 5px 30px;
+  font-family: Lato;
+  font-size: 15px;
+  line-height: 1.428571429;
+  border-color: white;
+  border-radius: 30px;
+  color: white;
+  background-color: #5482d3;
+}
+.carousel-inner img{
+  margin: 0 auto;
+}
+.hero-image{
   background-image: url('<%= asset_path('7904721504_8e9c6caa06_b.jpg') %>');
   background-size: cover;
   background-repeat: no-repeat;
@@ -79,7 +113,7 @@ body{
   margin-top: 150px;
   font-size: 1.125em;
   }
-.info-boxes button{
+.info-boxes button, .general-button, .submit-button input{
 background-color: #5482d3;
 font-family: Lato;
 padding-left: 30px;
@@ -88,6 +122,28 @@ padding-top: 5px;
 padding-bottom: 5px;
 border-color: white;
 border-radius: 30px;
+}
+.general-button, .submit-button input{
+  color: white;
+  margin-top: 30px;
+  transition: background-color .75s;
+}
+.general-button:hover, .submit-button input:hover{
+  background-color: #004596;
+}
+.submit-button input:active{
+  background-color: teal;
+}
+.delete-button{
+  background-color: #c1111c;
+  color: white;
+  text-decoration: none !important;
+  transition: background-color .75s, text-decoration .75s, color .75s;
+}
+.delete-button:hover{
+  background-color: black;
+  text-decoration: none;
+  color: white;
 }
 .give-info{
   background-image: url('<%= asset_path('6192694461_2c74b2ba1a_o.jpg') %>');
@@ -232,7 +288,7 @@ border-radius: 30px;
 }
 
 .profilePageGiftType {
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
 /*.profilePageGiftType:first-child {
@@ -259,6 +315,7 @@ border-radius: 30px;
   text-align: center;
   margin: 10px;
 }
+
 
 .radioButton label {
   display: block;
@@ -342,4 +399,106 @@ border-radius: 30px;
 .input-fields-style input{
   width: 100%;
 
+}
+
+
+/*loading icon*/
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+#loading {
+  height: 10px;
+  width: 10px;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  visibility: hidden;
+}
+#loading span {
+  position: absolute;
+  top: 25px;
+  text-align: center;
+  width: 200px;
+  bottom: 0;
+  left: -95px;
+  right: 0;
+  font-family: sans-serif;
+  color: #999;
+  letter-spacing: 2px;
+}
+
+#loading:before,
+#loading:after {
+  position: absolute;
+  display: block;
+  content: '.';
+  color: transparent;
+  width: 15px;
+  height: 15px;
+  background: #333;
+  border-radius: 50%;
+  -webkit-animation: loading 1s infinite linear;
+  margin-left: -7.5px;
+  margin-top: -7.5px;
+  transition: all .2s;
+}
+#loading:before {
+  background: white;
+  bottom: auto;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+#loading:after {
+  background: #004596;
+  bottom: 0;
+  top: auto;
+  left: 0;
+  right: 0;
+  -webkit-animation-delay: -.5s;
+}
+
+@-webkit-keyframes loading {
+  0% {
+    top: 0%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+  }
+  25% {
+    top: 50%;
+    left: 0%;
+  }
+  50% {
+    bottom: auto;
+    top: 100%;
+    right: auto;
+    left: 50%;
+  }
+  75% {
+    top: 50%;
+    bottom: auto;
+    left: 100%;
+    right: auto;
+  }
+  100% {
+    top: 0%;
+    bottom: auto;
+    left: 50%;
+    right: auto;
+  }
+}
+
+/*end loading*/
+.page-sizing{
+  height: 800px;
+}
+.extra-padding-to-nav{
+  padding-top: 5px;
 }
