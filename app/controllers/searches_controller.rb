@@ -1,14 +1,16 @@
 class SearchesController < ApplicationController
 
+  before_action :default_values_for_not_signed_in, only: [:results]
+
   def index
   end
 
   def results
     category = params[:category].downcase
     radius = params[:radius]
+
     if (category == "time" || category == "service" || category == "money" || category == "object") && radius
       redirect_to action: "resultsShow", category: category, radius: radius
-      # redirect_to "/searches/results/#{params[:category]}"
     else
       flash.now[:notice] = "Please enter a valid search term. (Your options are Time, Service, Money or Object.)"
       render :index
@@ -25,29 +27,21 @@ class SearchesController < ApplicationController
   end
 
   def resultsShow
-    if session[:user_id]
-      visitor = session[:user_id] 
-    else
-      visitor = nil
-
-    end
-
-          # this is for all encoumpassing search results. no category and all territories
-          # radius = 7000 # large radius to include all territory
-
-          # results = Gift.where(category_id: category) # these are the gifts based on the category search
-
-          # zip = Zipcode.find_by_zipcode("66952") # 66952 is the geographic center of the USA. It is Lebanon, KS
-      
-
 
     # the searched params
-    category ||= category_converter params[:category]
-    radius   ||= params[:radius]
+    category = category_converter params[:category]
+    radius   = params[:radius]
 
-    # Alex made this an instance of the Zipcode class which works for using the zip.perimeter_search call but, not needed from the approach of the data. Just need the zipcode of the user. I suppose it doesn't matter that it is an instance of the Zipcode class.
-    # Describing this inward out, this is the logged in user's ID, then find the user by that id, then get their zipcode, then finally find the Zipcode by the zipcode. Like I said above, seems redundant but allows the search to be called on zip. Would like to refactor later.
-    zip ||= Zipcode.find_by_zipcode(User.find_by_id(session[:user_id]).zipcode)
+    if session[:user_id]
+
+      # Alex made this an instance of the Zipcode class which works for using the zip.perimeter_search call but, not needed from the approach of the data. Just need the zipcode of the user. I suppose it doesn't matter that it is an instance of the Zipcode class.
+      # Describing this inward out, this is the logged in user's ID, then find the user by that id, then get their zipcode, then finally find the Zipcode by the zipcode. Like I said above, seems redundant but allows the search to be called on zip. Would like to refactor later.
+      zip = Zipcode.find_by_zipcode(User.find_by_id(session[:user_id]).zipcode)
+
+    else
+      zip = Zipcode.find_by_zipcode("66952") # 66952 is the geographic center of the USA. It is Lebanon, KS
+
+    end
 
     # the array of zipcodes within the user's given radius
     valid_locations = zip.perimeter_search(radius) # works! NOTE gives array of hashed objects
@@ -56,18 +50,36 @@ class SearchesController < ApplicationController
     results = Gift.where(category_id: category) # works! NOTE gives array of hashed objects
 
     # remove any gifts related to the logged in user
-    filtered_results = results.reject { |item| item.user_id == session[:user_id] }
+    if session[:user_id]
+      filtered_results = results.reject { |item| item.user_id == session[:user_id] }
+    else
+      filtered_results = results
+    end
 
     # Now check the zipcode of each gift within results is also within the validLocations. Map that back to results and there are the gifts withing the user's radius search.
     users = filtered_results.map { |result| result.user}
 
+    # zip codes within the user's searched radius
     valid_locations.map { |item| item[:zipcode] }
 
-    @users = users.select do |user| 
-      valid_locations.each do |location|
-        location.zipcode == user.zipcode 
-      end
-    end
+    # select only users that are within the valid_lacations
+    users = users.select do |user| 
+            valid_locations.each do |location|
+              location.zipcode == user.zipcode 
+            end
+          end
+
+    # remove any duplicate users in the results
+    @users = users.uniq
+
+
+# this is for all encoumpassing search results. no category and all territories
+# radius = 7000 # large radius to include all territory
+
+# results = Gift.where(category_id: category) # these are the gifts based on the category search
+
+
+
 
   end
 
@@ -85,8 +97,11 @@ class SearchesController < ApplicationController
     end
   end
 
+  def default_values_for_not_signed_in
+  end
+
   def search_params
-    params.require(:user).permit(:category, :radius, :zipcode )
+    params.require(:search).permit(:category, :radius, :zipcode )
   end
 
 end
