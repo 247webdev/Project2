@@ -73,8 +73,8 @@ class UsersController < ApplicationController
     redirect_to "/"
   end
 
-
 private
+
   def gift_params
     params.require(:gift).permit(:id, :title, :description )
   end
