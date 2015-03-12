@@ -6,51 +6,48 @@ class SearchesController < ApplicationController
   def results
     category = params[:category].downcase
     radius = params[:radius]
-
     if (category == "time" || category == "service" || category == "money" || category == "object") && radius
       redirect_to action: "resultsShow", category: category, radius: radius
       # redirect_to "/searches/results/#{params[:category]}"
     else
       flash.now[:notice] = "Please enter a valid search term. (Your options are Time, Service, Money or Object.)"
       render :index
-
     end
-
     # if params[:category] === "" && params[:location] === "" #if no search fields are entered 
     #  flash[:notice] === "Please enter a search term"
-
     # elsif (params[:category] === "" && params[:location] === "#{params[:location]}") #if location only is entered 
     #   @users === User.where(@user.location === params[:location])
-
     # elsif (params[:category] === "#{params[:category]}" && params[:location] === "") #if category only is entered 
     #   @users === User.where(category === params[:category])
-
     # else (params[:category] === "#{params[:category]}" && params[:location] === "#{params[:location]}")
     #   @users === User.where(location === params[:location] && category === params[:category])
-
     # end
   end
 
   def resultsShow
+    if session[:user_id]
+      visitor = session[:user_id] 
+    else
+      visitor = nil
 
-    #######
-    # if the user is not logged in and searches, I need to use some demo zip and 5000 miles
-    #######
+    end
+
+          # this is for all encoumpassing search results. no category and all territories
+          # radius = 7000 # large radius to include all territory
+
+          # results = Gift.where(category_id: category) # these are the gifts based on the category search
+
+          # zip = Zipcode.find_by_zipcode("66952") # 66952 is the geographic center of the USA. It is Lebanon, KS
+      
+
 
     # the searched params
-    category = category_converter params[:category]
-    radius   = params[:radius]
+    category ||= category_converter params[:category]
+    radius   ||= params[:radius]
 
-    if session[:user_id]
-      # Alex made this an instance of the Zipcode class which works for using the zip.perimeter_search call but, not needed from the approach of the data. Just need the zipcode of the user. I suppose it doesn't matter that it is an instance of the Zipcode class.
-      # Describing this inward out, this is the logged in user's ID, then find the user by that id, then get their zipcode, then finally find the Zipcode by the zipcode. Like I said above, seems redundant but allows the search to be called on zip. Would like to refactor later.
-      zip = Zipcode.find_by_zipcode(User.find_by_id(session[:user_id]).zipcode)
-    else
-      # the user is not logged in and we need to use a demo zip and radius
-      category = ###### shall we do any????
-      radius = 5000
-    end
-    
+    # Alex made this an instance of the Zipcode class which works for using the zip.perimeter_search call but, not needed from the approach of the data. Just need the zipcode of the user. I suppose it doesn't matter that it is an instance of the Zipcode class.
+    # Describing this inward out, this is the logged in user's ID, then find the user by that id, then get their zipcode, then finally find the Zipcode by the zipcode. Like I said above, seems redundant but allows the search to be called on zip. Would like to refactor later.
+    zip ||= Zipcode.find_by_zipcode(User.find_by_id(session[:user_id]).zipcode)
 
     # the array of zipcodes within the user's given radius
     valid_locations = zip.perimeter_search(radius) # works! NOTE gives array of hashed objects
@@ -75,6 +72,7 @@ class SearchesController < ApplicationController
   end
 
   private
+
   def category_converter param
     if param == "time"
       return 1
@@ -85,6 +83,10 @@ class SearchesController < ApplicationController
     elsif param == "object"
       return 4
     end
+  end
+
+  def search_params
+    params.require(:user).permit(:category, :radius, :zipcode )
   end
 
 end
