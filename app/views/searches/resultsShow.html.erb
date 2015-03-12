@@ -1,26 +1,50 @@
 <!-- coming from resultsShow.html.erb -->
-
+<div class="flex-container">
 <% @users.each do |user| %>
-
+<a href="/users/<%= user.id %>">
+<div class="flex-items-default text-center">
+<div class="profilePagePhoto center" style="background-image: url(<%= user.profile_pic %>); background-size: cover; background-position:center;"></div>
 <h1>
-  <%= user.first_name %> <%= user.last_name %>
+  <%= user.first_name %>
 </h1>
 
 <div>
-  <img src="" alt="">
-  <p>
-    Give
-  </p>
+  <h3>
+    Give 
+    <small> 
+    <% if user.gifts.find_by_type_id(1).category_id == 1 %>
+      Time
+    <% elsif user.gifts.find_by_type_id(1).category_id == 2 %>
+      Service
+    <% elsif user.gifts.find_by_type_id(1).category_id == 3 %>
+      Donation
+    <% elsif user.gifts.find_by_type_id(1).category_id == 4 %>
+      Object
+    <% end %>
+    </small>
+  </h3>
   <p>
     <%= user.gifts.find_by_type_id(1).title %>
   </p>
-  <p>
+  <h3>
     Get
-  </p>
+    <small> 
+    <% if user.gifts.find_by_type_id(2).category_id == 1 %>
+      Time
+    <% elsif user.gifts.find_by_type_id(2).category_id == 2 %>
+      Service
+    <% elsif user.gifts.find_by_type_id(2).category_id == 3 %>
+      Donation
+    <% elsif user.gifts.find_by_type_id(2).category_id == 4 %>
+      Object
+    <% end %>
+    </small>
+  </h3>
   <p>
     <%= user.gifts.find_by_type_id(2).title %>
   </p>
 </div>
-
-
+</div>
+</a>
 <% end %>
+</div>
