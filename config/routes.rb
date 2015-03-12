@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   delete '/logout', to: "access#logout", as: "logout"
 
-  get 'searches/index'
+  get 'searches/index', as: "search"
 
 
   # get 'searches/results'
