@@ -38,6 +38,7 @@ gem 'rack', '~>1.1'
 gem 'rails_12factor'
 
 # Use puma as the app server
+# Added a comment.
 gem 'puma'
 
 # Use Capistrano for deployment
