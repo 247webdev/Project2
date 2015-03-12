@@ -5,6 +5,9 @@ class AccessController < ApplicationController
   def landingpage
   end
 
+  def about
+  end
+
   def attempt_login
     if params[:email].present? && params[:password].present?
       found_user = User.where(email: params[:email]).first
@@ -20,7 +23,7 @@ class AccessController < ApplicationController
         redirect_to :back, notice: "Incorrect email or password."
       end
     else
-      redirect_to :back, notice: "Please enter email and password"
+      redirect_to :back, notice: "Please enter email and password."
     end
   end
 
