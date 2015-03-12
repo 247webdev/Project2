@@ -53,6 +53,7 @@ class UsersController < ApplicationController
       newget.update(description: @get["description"])
       newget.update(type_id: 2)
       newget.update(category_id: @get["category_id"])
+      session[:user_id] = @user.id
       redirect_to "/searches/index", notice: "Success, your profile was created."
     else
       render "/users/new"
