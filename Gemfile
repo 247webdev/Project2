@@ -37,8 +37,8 @@ gem 'rack', '~>1.1'
 # heroku wants this
 gem 'rails_12factor'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
+# Use puma as the app server
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
