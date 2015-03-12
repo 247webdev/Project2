@@ -12,9 +12,9 @@
   
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container" class="navcontainer">
-      
+      <a href="/">
       <p class="navbar-text navbar-left"><span>Good</span>&amp;Co.</p>
-      
+      </a>
       <ul class="nav navbar-nav navbar-right">
         <% if !session[:user_id] %>
           <li>
@@ -32,6 +32,12 @@
         <li><%= link_to("Search", controller: "searches", action: "index") %></li>
         <% if session[:user_id] %>
           <li><%= link_to("Profile", "/users/#{session[:user_id]}") %></li>
+
+          <li>
+            <% if session[:user_id] %>
+              <%= link_to "Edit Profile", "/users/#{session[:user_id]}/edit"%>
+            <% end %> 
+          </li>
           <li><%= link_to("Logout", logout_path, method: :delete) %></li>
         <% else %>
           <li><%= link_to("Login", "/") %></li>
@@ -44,11 +50,11 @@
   <% flash.each do |key, value| %>
   
     <% if key == "notice" %>
-      <%= content_tag :div, value, class: "text-center alert alert-warning" %>
+      <%= content_tag :div, value, class: "text-center alert alert-warning flashMessage" %>
     <% elsif key == "alert" %>
-      <%= content_tag :div, value, class: "text-center alert alert-danger" %>
+      <%= content_tag :div, value, class: "text-center alert alert-danger flashMessage" %>
     <% else %>
-      <%= content_tag :div, value, class: "text-center alert alert-success" %>
+      <%= content_tag :div, value, class: "text-center alert alert-success flashMessage" %>
     <% end %>
   <% end %>
 

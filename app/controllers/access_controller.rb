@@ -1,6 +1,6 @@
 class AccessController < ApplicationController
 
-  before_action :prevent_login_signup, only: [:signup, :login]
+  before_action :prevent_login_signup, only: [:landingpage]
 
   def landingpage
   end
@@ -15,12 +15,12 @@ class AccessController < ApplicationController
         authorized_user = found_user.authenticate(params[:password])
         if authorized_user
           session[:user_id] = found_user.id
-          redirect_to "/users/#{found_user.id}", notice: "You are logged in."
+          redirect_to "/users/#{found_user.id.to_s}", notice: "You are logged in"
         else
-          redirect_to :back, notice: "Incorrect email or password."
+          redirect_to :back, notice: "Incorrect email or password"
         end
       else
-        redirect_to :back, notice: "Incorrect email or password."
+        redirect_to :back, notice: "Incorrect email or password"
       end
     else
       redirect_to :back, notice: "Please enter email and password."
@@ -29,6 +29,7 @@ class AccessController < ApplicationController
 
   def logout
     session[:user_id] = nil
+    flash[:notice] = "You have logged out"
     redirect_to "/"
   end
 
@@ -36,13 +37,6 @@ class AccessController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_digest)
-  end
-
-  #see if the user is logged in and if so redirect them back to home
-  def prevent_login_signup
-    if session[:user_id]
-      redirect_to home_path
-    end
   end
 
 end

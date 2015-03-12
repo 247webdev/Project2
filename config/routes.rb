@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
 
   # get 'searches/results'
+  
   post 'searches/results', to: "searches#results" # Christian asking, why is this route needed? I'm not understanding and feel that it is not needed.
 
   get 'searches/results/:category', to: "searches#resultsShow"

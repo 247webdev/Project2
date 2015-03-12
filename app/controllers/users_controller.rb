@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 
   before_action :prevent_login_signup, only: [:new, :create]
+  before_action :no_log_show, only: [:edit, :show]
+  before_action only: :edit do
+    invalid_edit params[:id]
+  end
 
   def index #for general search by non-validated users
   end
@@ -12,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id])
     @gift = @user.gifts
     @give = @gift.find_by(type_id: 1)
     @get = @gift.find_by(type_id: 2)
@@ -34,9 +38,10 @@ class UsersController < ApplicationController
     @user.update(profile_pic: params[:uploadcare])
     @give = params["user"]["gifts_attributes"]["0"]
     @get = params["user"]["gifts_attributes"]["1"]
-    binding.pry
+
 
     if @user.save
+
       newgive = @user.gifts.new
       newget = @user.gifts.new
 
@@ -48,7 +53,7 @@ class UsersController < ApplicationController
       newget.update(description: @get["description"])
       newget.update(type_id: 2)
       newget.update(category_id: @get["category_id"])
-      redirect_to "/searches/index", notice: 'Success, your profile was created.'
+      redirect_to "/searches/index", flash[:notice] = "Success, your profile was created."
     else
       render "/users/new"
     end
@@ -73,10 +78,10 @@ private
     params.require(:user).permit(:id, :first_name, :last_name, :email, :zipcode, :password )
   end
 
-  #see if the user is logged in and if so redirect them back to home
-  def prevent_login_signup
-    if session[:user_id]
-      redirect_to home_path
+  def invalid_edit id
+    if session[:user_id].to_s != id
+      flash[:notice] = "You may only edit your user page"
+      redirect_to "/users/#{session[:user_id]}"
     end
   end
 

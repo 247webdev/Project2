@@ -17,7 +17,7 @@
  @import "bootstrap";
 body{
   font-family: Montserrat, sans-serif;
-  padding-top: 0px;
+  padding-top: 50px;
 }
  .hero-image{
   background-image: url('7904721504_8e9c6caa06_b.jpg');
@@ -121,5 +121,35 @@ border-radius: 30px;
 .infographic-row{
   margin-top: 20px;
 }
+.flex-container {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: flex-start;
+    padding-top: 60px;
+}
+.flex-items-default {
+    width: 300px;
+    height: 400px;
 
+
+}
+.flex-items-default h3{
+  margin-top: 10px;
+  }
+.flex-container a{
+  text-decoration: none;
+  color: #333333;
+  }
+.flex-container a:hover{
+  text-decoration: none;
+  color: #666666;
+  }
+
+
+.flashMessage {
+  margin-bottom: 0px;
+}
 
