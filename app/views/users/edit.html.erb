@@ -9,7 +9,7 @@
     <p><%= f.text_field :last_name %></p>
     <p><%= f.text_field :email %></p>
     <p><%= f.text_field :zipcode %></p>
-    <%= f.submit %>&nbsp;<%= link_to "Detele", user_path(@user), method: "delete", class:"btn btn-danger" %>
+    <%= f.submit class:"general-button" %>&nbsp;<%= link_to "Delete", user_path(@user), method: "delete", class:"general-button delete-button" %>
 
   <% end %>
 
@@ -46,7 +46,7 @@
         </div>
       </div>
 
-      <%= f.submit %>
+      <%= f.submit class:"general-button" %>
 
     <% end %> 
   </div>
@@ -80,10 +80,11 @@
         </div>
       </div>
 
-      <%= f.submit %>
+      <%= f.submit class:"general-button" %>
     <% end %>
   </div>
-
   </div>
-
+  <br>
+  
 </div>
+
