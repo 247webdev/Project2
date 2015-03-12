@@ -1,5 +1,19 @@
 <!-- coming from resultsShow.html.erb -->
-<div class="flex-container">
+<div class="container page-background-color">
+<div class="row search-results-header">
+    <div class="col-md-2">
+      <a href="/searches/index">
+        <p class="text-center">Back to Search</p>
+      </a>
+    </div>
+    <div class="col-md-8 text-center">
+    <h1>Search Results</h1>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+</div>
+<div class="flex-container container page-background-color">
 <% @users.each do |user| %>
 <a href="/users/<%= user.id %>">
 <div class="flex-items-default text-center">

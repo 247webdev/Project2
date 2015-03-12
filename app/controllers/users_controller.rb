@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :prevent_login_signup, only: [:new, :create]
+  before_action :no_log_show, only: [:edit, :show]
   before_action only: :edit do
     invalid_edit params[:id]
   end
@@ -52,7 +53,7 @@ class UsersController < ApplicationController
       newget.update(description: @get["description"])
       newget.update(type_id: 2)
       newget.update(category_id: @get["category_id"])
-      redirect_to "/searches/index", flash[:notice] = "Success, your profile was created."
+      redirect_to "/searches/index", notice: "Success, your profile was created."
     else
       render "/users/new"
     end

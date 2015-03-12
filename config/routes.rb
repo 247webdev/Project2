@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'access/landingpage'
 
+  get 'access/about'
+
   delete '/logout', to: "access#logout", as: "logout"
 
   get 'searches/index'

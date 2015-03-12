@@ -1,10 +1,11 @@
 <!-- This is coming from: view/users/create.html.erb -->
+<div class="container page-background-color">
 <div class="before-page text-center">
   <h1>Create a Profile</h1>
 </div>
-<ul class="nav nav-tabs">
+<!-- <ul class="nav nav-tabs">
   <li role="presentation" class="active"><a href="#">Personal</a></li>
-</ul>
+</ul> -->
 
 <div class="container text-center new-form">
 
@@ -17,15 +18,16 @@
     <% end %>
   </ul>
   <% end %>
-
+  
   <div class="row">
     <!-- Within Bootstrap, tab trigger this on Personal tab -->
-    <div class="col-sm-5 text-left">
+    <div class="col-sm-5 text-center">
       <div class="image-preview-single">
-        <p><b> Upload a Profile Picture:</b>
+        
           <img src="" alt="">
           <input type="hidden" role="uploadcare-uploader" data-clearable="" data-images-only="" data-image-shrink="180x180 80%" data-public-key="8f615b911b6092cc8a13" value="" name="uploadcare">
         </div>
+        <p><b> Upload a Profile Picture</b>
       </p>
 
     </div>
@@ -83,14 +85,14 @@
     <!-- <h1>Give:</h1> -->
     <!-- <h1>Get:</h1> -->
     <% if builder.index == 0 %>
-    <h1>Give: </h1>
+    <h1>What can you Give?</h1>
     <% else %>
-    <h1>Get: </h1>
+    <h1>What would you like to Get?<small> (totally optional).</h1>
     <% end %>
 
-    <%= builder.label :title, "Title" %>
+    <h3><%= builder.label :title, "Title" %></h3>
     <p><%= builder.text_field :title %></p>
-    <%= builder.label :description, "Description" %>
+    <h3><small><%= builder.label :description, "Description" %></small></h3>
     <p><%= builder.text_area :description, rows: 5, cols: 70 %></p>
     <div class="radioButtons">
     <div class="radioButton">
@@ -114,7 +116,7 @@
   </p>
 
   <p>
-    <%= f.submit%>
+    <%= f.submit "Create Profile"%>
   </p>
 
 </div>
@@ -141,4 +143,4 @@
   </span>
 </div>
 </div>
-<br><br><br><br>
+</div>

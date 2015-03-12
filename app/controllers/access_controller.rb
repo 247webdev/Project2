@@ -5,6 +5,9 @@ class AccessController < ApplicationController
   def landingpage
   end
 
+  def about
+  end
+
   def attempt_login
     if params[:email].present? && params[:password].present?
       found_user = User.where(email: params[:email]).first
@@ -12,15 +15,15 @@ class AccessController < ApplicationController
         authorized_user = found_user.authenticate(params[:password])
         if authorized_user
           session[:user_id] = found_user.id
-          redirect_to "/users/#{found_user.id}", flash[:notice] = "You are logged in"
+          redirect_to "/users/#{found_user.id.to_s}", notice: "You are logged in"
         else
-          redirect_to :back, flash[:notice] = "Incorrect email or password"
+          redirect_to :back, notice: "Incorrect email or password"
         end
       else
-        redirect_to :back, flash[:notice] = "Incorrect email or password"
+        redirect_to :back, notice: "Incorrect email or password"
       end
     else
-      redirect_to :back, flash[:notice] = "Please enter email and password"
+      redirect_to :back, notice: "Please enter email and password."
     end
   end
 

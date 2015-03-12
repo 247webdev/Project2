@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Edit <%= @user.first_name %></title>
-</head>
-<body>
-<div class="container">
+<div class="container page-background-color">
 
-
-<p> <%= link_to "Home", "/users" %> | <%= link_to "About", "/about" %> | <%= link_to "Logout", "/logout" %>
-</p>
 <!-- Title -->
 <h1 class = "showProfileName">Edit Your Profile</h1>
 <!-- Form for editing user information -->
@@ -36,7 +26,7 @@
       
       <p><%= f.text_field :title %></p>
       <p><%= f.text_area :description, rows: 5, cols: 70%></p>
-      
+      <h1><small>Choose a category for your give:</small></h1>
       <div class="radioButtons">
         <div class="radioButton">
         <%= f.radio_button(:category_id, 1) %>
@@ -70,7 +60,7 @@
     <%= form_for @get do |f| %>
       <p><%= f.text_field :title %></p>
       <p><%= f.text_area :description, rows: 5, cols: 70 %></p>
-      
+      <h1><small>Choose a category for your get:</small></h1>
       <div class="radioButtons">
         <div class="radioButton">
         <%= f.radio_button(:category_id, 1) %>
@@ -97,5 +87,3 @@
   </div>
 
 </div>
-</body>
-</html>

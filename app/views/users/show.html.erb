@@ -1,16 +1,4 @@
-<div class="container">
-
-
-<p> <%= link_to "Home", "/users" %> | <%= link_to "About", "/about" %> | 
-<% if @user.id == session[:user_id] %>
-  <%= link_to "Edit", edit_user_path(@user)%> |
-<% end %> 
-  
-
-
- <%= link_to "Logout", "/logout" %>
-</p>
-
+<div class="container page-background-color">  
 <h1 class = "showProfileName"><%= @user.first_name %>'s Profile</h1>
 
 <div class="profilePagePhoto center" style="background-image: url(<%= @user.profile_pic %>); background-size: cover; background-position:center;"></div>
@@ -22,7 +10,9 @@
   <h2 class = "profilePageGiftType">What <%= @user.first_name %> can Give.</h2>
 
   <h3 class = "profilePageGiftTitle center"><%= @give.title %></h3>
-  
+  <!-- See if we should type out category name instead of picture -->
+        <!-- <h3 class = "center"><small><%= @give.category_id %></small></h3> -->
+  <!--  -->
   <h4 class = "profilePageGiftDescription center">
     <%= @give.description %>
   </h4>
@@ -40,9 +30,9 @@
   </div>
 
 
-  <p>
-    <a href="mailto:<%= @user.email %>">Contact <%= @user.first_name %></a>
-  </p>
+  <form action="mailto:<%= @user.email %>">
+  <button>Contact <%= @user.first_name %></button>
+  </form>
 <% end %>
 
 <% if @get.present? == true %>
@@ -65,10 +55,9 @@
       <%= image_tag("object.png") %>
     <% end %>
   </div>
-
-  <p>
-    <a href="mailto:<%= @user.email %>">Contact <%= @user.first_name %></a>
-  </p>
+  <form action="mailto:<%= @user.email %>">
+  <button>Contact <%= @user.first_name %></button>
+  </form>
   <% end %>
   </p>
 </div>
