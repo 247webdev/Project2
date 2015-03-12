@@ -44,9 +44,8 @@ class UsersController < ApplicationController
 
     if @user.save && @give.save
       session[:user_id] = @user.id
-      binding.pry
       @get.save
-      redirect_to "/searches/index", notice: "Success, your profile was created."
+      redirect_to searches_index_path , notice: "Success, your profile was created."
     else
       @user.destroy
       flash[:alert] = @user.errors.full_messages.join(", ")
@@ -57,14 +56,14 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update_attributes user_params
-    redirect_to "/users/#{@user.id}"
+    redirect_to user_path(@user)
   end
 
   def destroy
     User.destroy(session[:user_id])
     session[:user_id] = nil
     flash[:notice] = "You deleted your account."
-    redirect_to "/"
+    redirect_to root
   end
 
 
