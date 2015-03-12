@@ -66,7 +66,11 @@ class UsersController < ApplicationController
     redirect_to :back
   end
 
-  def delete
+  def destroy
+    User.destroy(session[:user_id])
+    session[:user_id] = nil
+    flash[:notice] = "You deleted your account."
+    redirect_to "/"
   end
 
 
