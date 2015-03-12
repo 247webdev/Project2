@@ -32,13 +32,25 @@ class SearchesController < ApplicationController
   end
 
   def resultsShow
+
+    #######
+    # if the user is not logged in and searches, I need to use some demo zip and 5000 miles
+    #######
+
     # the searched params
     category = category_converter params[:category]
     radius   = params[:radius]
 
-    # Alex made this an instance of the Zipcode class which works for using the zip.perimeter_search call but, not needed from the approach of the data. Just need the zipcode of the user. I suppose it doesn't matter that it is an instance of the Zipcode class.
-    # Describing this inward out, this is the logged in user's ID, then find the user by that id, then get their zipcode, then finally find the Zipcode by the zipcode. Like I said above, seems redundant but allows the search to be called on zip. Would like to refactor later.
-    zip = Zipcode.find_by_zipcode(User.find_by_id(session[:user_id]).zipcode)
+    if session[:user_id]
+      # Alex made this an instance of the Zipcode class which works for using the zip.perimeter_search call but, not needed from the approach of the data. Just need the zipcode of the user. I suppose it doesn't matter that it is an instance of the Zipcode class.
+      # Describing this inward out, this is the logged in user's ID, then find the user by that id, then get their zipcode, then finally find the Zipcode by the zipcode. Like I said above, seems redundant but allows the search to be called on zip. Would like to refactor later.
+      zip = Zipcode.find_by_zipcode(User.find_by_id(session[:user_id]).zipcode)
+    else
+      # the user is not logged in and we need to use a demo zip and radius
+      category = ###### shall we do any????
+      radius = 5000
+    end
+    
 
     # the array of zipcodes within the user's given radius
     valid_locations = zip.perimeter_search(radius) # works! NOTE gives array of hashed objects
