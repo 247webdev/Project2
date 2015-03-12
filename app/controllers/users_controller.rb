@@ -52,14 +52,14 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update_attributes user_params
-    redirect_to "/users/#{@user.id}"
+    redirect_to user_path(@user)
   end
 
   def destroy
     User.destroy(session[:user_id])
     session[:user_id] = nil
     flash[:notice] = "You deleted your account."
-    redirect_to "/"
+    redirect_to root
   end
 
 

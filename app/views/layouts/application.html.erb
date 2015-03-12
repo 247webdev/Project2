@@ -18,7 +18,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if !session[:user_id] %>
           <li>
-            <%= form_tag(login_path, class: 'navbar-form navbar-left') do %>
+            <%= form_tag(login_path, class: 'navbar-form navbar-left extra-padding-to-nav') do %>
               <%= label_tag(:email) %>
               <%= text_field_tag(:email, params[:email]) %>
 
