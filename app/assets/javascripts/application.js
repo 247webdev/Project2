@@ -16,8 +16,14 @@
 //= require_tree 
 //= require bootstrap
 
+$('document').ready(function() {
+  setTimeout(function() {
+    $('.flashMessage').slideUp();
+  }, 3500);
+});
 
 $( ".submit-button > input" ).click(function() {
   // alert( "Handler for .click() called." );
   $('#loading').css('visibility', 'visible');
+
 });

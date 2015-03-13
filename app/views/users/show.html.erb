@@ -13,9 +13,9 @@
   <!-- See if we should type out category name instead of picture -->
    <div class="profilePageGiftCategoryImage center">
     <% if @give.category_id == 1 %>
-      <h3><small>Service</small></h3>
+      <h3><small>Time</small></h3>
     <% elsif @give.category_id == 2%>
-        <h3><small>Time</small></h3>
+        <h3><small>Service</small></h3>
     <% elsif @give.category_id == 3%>
       <h3><small>Donation</small></h3>
     <% elsif @give.category_id == 4%>
@@ -40,13 +40,13 @@
   <h2 class = "profilePageGiftType">What <%= @user.first_name %> would like to Get.</h2>
   <h3 class = "profilePageGiftTitle center"><%= @get.title %></h3>
    <div class="profilePageGiftCategoryImage center">
-    <% if @give.category_id == 1 %>
-      <h3><small>Service</small></h3>
-    <% elsif @give.category_id == 2%>
-        <h3><small>Time</small></h3>
-    <% elsif @give.category_id == 3%>
+    <% if @get.category_id == 1 %>
+      <h3><small>Time</small></h3>
+    <% elsif @get.category_id == 2%>
+        <h3><small>Service</small></h3>
+    <% elsif @get.category_id == 3%>
       <h3><small>Donation</small></h3>
-    <% elsif @give.category_id == 4%>
+    <% elsif @get.category_id == 4%>
       <h3><small>Gift</small></h3>
     <% end %>
   </div>

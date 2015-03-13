@@ -15,7 +15,11 @@
  */
 
  @import "bootstrap";
+.about {
+  background-color: black;
+}
 .about-heading {
+  background-color: white;
   padding: 10;
   text-align: center;
 }
@@ -34,6 +38,9 @@ body{
   font-family: Montserrat, sans-serif;
   padding-top: 50px;
 }
+#carousel-example-generic {
+  height: 500px;
+}
 .carousel-inner {
   background-color: black;
   background-size: cover;
@@ -50,18 +57,9 @@ body{
   color: white;
   background-color: #5482d3;
 }
-.carousel-inner img{
+.item img{
   margin: 0 auto;
-  flex-shrink:0;
-  min-width:100%;
-  min-height:100%
-}
-.fill {
-  display:flex;
-  align-items:center;
-  overflow:hidden;
-}
-.fill img {
+  height: 500px;
 
 }
 .hero-image{
@@ -133,6 +131,10 @@ padding-top: 5px;
 padding-bottom: 5px;
 border-color: white;
 border-radius: 30px;
+}
+.italics {
+  font-style: italic;
+  color: #777;
 }
 .general-button, .submit-button input{
   color: white;
@@ -250,9 +252,11 @@ border-radius: 30px;
 
 }
 
-
-
-
+.copy-navbar {
+  font-style: normal;
+  font-weight: bold;
+  color: #191B1A;
+}
 .navbar-left {
   font-size: 1.1em;
   font-style: italic;
