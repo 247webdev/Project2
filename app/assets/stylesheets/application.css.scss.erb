@@ -52,6 +52,17 @@ body{
 }
 .carousel-inner img{
   margin: 0 auto;
+  flex-shrink:0;
+  min-width:100%;
+  min-height:100%
+}
+.fill {
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+}
+.fill img {
+
 }
 .hero-image{
   background-image: url('<%= asset_path('7904721504_8e9c6caa06_b.jpg') %>');
