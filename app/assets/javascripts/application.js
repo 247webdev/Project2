@@ -15,11 +15,3 @@
 //= require turbolinks
 //= require_tree 
 //= require bootstrap
-var widget = uploadcare.Widget('[role=uploadcare-uploader]');
-
-widget.onUploadComplete(function(info) {
-  // Handle uploaded file info.
-});
-
-
-
