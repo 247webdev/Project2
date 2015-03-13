@@ -19,7 +19,7 @@
 $('document').ready(function() {
   setTimeout(function() {
     $('#flash').slideUp();
-  }, 6000);
+  }, 10000);
 });
 
 $('document').ready(function() {
