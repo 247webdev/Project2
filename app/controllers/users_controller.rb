@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update_attributes user_params
+    @user.update(first_name: params[:user][:first_name], last_name: params[:user][:last_name])
     redirect_to "/users/#{@user.id}"
   end
 
@@ -67,6 +67,10 @@ private
 
   def user_params
     params.require(:user).permit(:id, :first_name, :last_name, :email, :zipcode, :password, :password_digest, gifts_attributes: [:title, :description, :category_id])
+  end
+
+  def update_user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :zipcode, gifts_attributes: [:title, :description, :category_id])
   end
 
   def invalid_edit id
