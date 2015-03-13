@@ -16,7 +16,13 @@
 <div class="flex-container container page-background-color">
 
   <% @users.each do |user| %>
-  <a href="/users/<%= user.id %>">
+    <% if session[:user_id] %>
+      <a href="/users/<%= user.id %>">
+    <% else %>
+      <% flash[:notice] = "Please log in or sign up!" %>
+      <a href="<%= landingpage_path %>" >
+    <% end %>
+
     <div class="flex-items-default text-center">
       <div class="profilePagePhoto center" style="background-image: url(<%= user.profile_pic %>); background-size: cover; background-position:center;"></div>
       <h1>
@@ -60,6 +66,8 @@
         </p>
       </div>
     </div>
-  </a>
+    <% if session[:user_id] %>
+      </a>
+    <% end %>
   <% end %>
 </div>
