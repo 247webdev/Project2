@@ -18,12 +18,6 @@
 
 $('document').ready(function() {
   setTimeout(function() {
-    $('#flash').slideUp();
-  }, 10000);
-});
-
-$('document').ready(function() {
-  setTimeout(function() {
     $('.flashMessage').slideUp();
   }, 3500);
 });
