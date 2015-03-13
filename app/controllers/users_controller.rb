@@ -59,20 +59,27 @@ class UsersController < ApplicationController
     User.destroy(session[:user_id])
     session[:user_id] = nil
     flash[:notice] = "You deleted your account."
-    redirect_to root
+    redirect_to landingpage_path
   end
 
-
 private
+
+  def gift_params
+    params.require(:gift).permit(:id, :title, :description )
+  end
 
   def user_params
     params.require(:user).permit(:id, :first_name, :last_name, :email, :zipcode, :password, :password_digest, gifts_attributes: [:title, :description, :category_id])
   end
 
+  def update_user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :zipcode, gifts_attributes: [:title, :description, :category_id])
+  end
+
   def invalid_edit id
     if session[:user_id].to_s != id
       flash[:notice] = "You may only edit your user page"
-      redirect_to "/users/#{session[:user_id]}"
+      redirect_to '/'
     end
   end
 
