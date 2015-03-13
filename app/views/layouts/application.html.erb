@@ -6,7 +6,22 @@
   <%= csrf_meta_tags %>
   <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-  
+  <!-- Widget config for Upload Care -->
+  <script>
+    UPLOADCARE_PUBLIC_KEY = '8f615b911b6092cc8a13';
+    UPLOADCARE_TABS = 'all';
+    UPLOADCARE_IMAGES_ONLY = true;
+    UPLOADCARE_PREVIEW_STEP = true;
+    UPLOADCARE_CLEARABLE = true;
+  </script>
+  <script charset="utf-8" src="https://ucarecdn.com/widget/2.0.2/uploadcare/uploadcare.full.min.js"></script>
+  <!-- end -->
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js">
+  </script>
 </head>
 <body>
   
@@ -59,23 +74,7 @@
     <% end %>
   <% end %>
 
-
 <%= yield %>
-<!-- Widget config for Upload Care -->
-<script>
-  UPLOADCARE_PUBLIC_KEY = '8f615b911b6092cc8a13';
-  UPLOADCARE_TABS = 'all';
-  UPLOADCARE_IMAGES_ONLY = true;
-  UPLOADCARE_PREVIEW_STEP = true;
-  UPLOADCARE_CLEARABLE = true;
-</script>
-<script charset="utf-8" src="https://ucarecdn.com/widget/2.0.2/uploadcare/uploadcare.full.min.js"></script>
-<!-- end -->
 
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
-<!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js">
-  </script>
 </body>
 </html>

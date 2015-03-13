@@ -9,8 +9,10 @@
     <p><%= f.text_field :last_name %></p>
     <p><%= f.text_field :email %></p>
     <p><%= f.text_field :zipcode %></p>
-    <%= f.submit class:"general-button" %>&nbsp;<%= link_to "Delete", user_path(@user), method: "delete", data: { confirm: "Are you sure you want to delete your account?\nThis can not be undone." }, class:"general-button delete-button" %>
+    <p><%= f.submit class:"general-button" %></p>
+    <p><%= link_to "Delete", user_path(@user), method: "delete", data: { confirm: "Are you sure you want to delete your account?\nThis can not be undone." }, class:"general-button delete-button" %></p>
   <% end %>
+
 
   </div>
 <!-- What the user can give -->
