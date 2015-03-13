@@ -13,10 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
-var widget = uploadcare.Widget('[role=uploadcare-uploader]');
-
-widget.onUploadComplete(function(info) {
-  // Handle uploaded file info.
-});
-
+//= require_tree 
+//= require bootstrap

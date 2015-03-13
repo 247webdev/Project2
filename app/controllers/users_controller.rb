@@ -51,19 +51,22 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(first_name: params[:user][:first_name], last_name: params[:user][:last_name])
-    redirect_to "/users/#{@user.id}"
+    @user.update_attributes user_params
+    redirect_to user_path(@user)
   end
 
   def destroy
     User.destroy(session[:user_id])
     session[:user_id] = nil
     flash[:notice] = "You deleted your account."
-    redirect_to "/"
+    redirect_to landingpage_path
   end
 
-
 private
+
+  def gift_params
+    params.require(:gift).permit(:id, :title, :description )
+  end
 
   def user_params
     params.require(:user).permit(:id, :first_name, :last_name, :email, :zipcode, :password, :password_digest, gifts_attributes: [:title, :description, :category_id])
@@ -76,7 +79,7 @@ private
   def invalid_edit id
     if session[:user_id].to_s != id
       flash[:notice] = "You may only edit your user page"
-      redirect_to "/users/#{session[:user_id]}"
+      redirect_to '/'
     end
   end
 

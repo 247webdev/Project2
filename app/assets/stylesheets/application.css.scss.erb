@@ -15,11 +15,45 @@
  */
 
  @import "bootstrap";
+.about-heading {
+  padding: 10;
+  text-align: center;
+}
+.about-heading button {
+  margin: 10px 0 25px 0;
+  padding: 5px 30px;
+  font-family: Lato;
+  font-size: 15px;
+  line-height: 1.428571429;
+  border-color: white;
+  border-radius: 30px;
+  color: white;
+  background-color: #5482d3;
+}
 body{
   font-family: Montserrat, sans-serif;
   padding-top: 50px;
 }
- .hero-image{
+.carousel-inner {
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+}
+.carousel-inner button {
+  margin: 10px 0 25px 0;
+  padding: 5px 30px;
+  font-family: Lato;
+  font-size: 15px;
+  line-height: 1.428571429;
+  border-color: white;
+  border-radius: 30px;
+  color: white;
+  background-color: #5482d3;
+}
+.carousel-inner img{
+  margin: 0 auto;
+}
+.hero-image{
   background-image: url('<%= asset_path('7904721504_8e9c6caa06_b.jpg') %>');
   background-size: cover;
   background-repeat: no-repeat;
@@ -282,6 +316,7 @@ border-radius: 30px;
   margin: 10px;
 }
 
+
 .radioButton label {
   display: block;
 }
@@ -464,3 +499,8 @@ html, body {
 .page-sizing{
   height: 800px;
 }
+.extra-padding-to-nav{
+  padding-top: 5px;
+}
+
+
