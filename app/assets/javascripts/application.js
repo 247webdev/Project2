@@ -18,8 +18,14 @@
 
 $('document').ready(function() {
   setTimeout(function() {
-    $('#zipup').slideUp();
+    $('#flash').slideUp();
   }, 6000);
+});
+
+$('document').ready(function() {
+  setTimeout(function() {
+    $('.flashMessage').slideUp();
+  }, 3500);
 });
 
 $( ".submit-button > input" ).click(function() {
