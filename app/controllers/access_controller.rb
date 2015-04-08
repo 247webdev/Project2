@@ -10,10 +10,22 @@ class AccessController < ApplicationController
 
   # Login functionality
   def attempt_login
-    if params[:email].present? && params[:password].present?
-      found_user = User.where(email: params[:email]).first
+    login_function(params[:email], params[:password])
+  end
+
+  # Logout functionality
+  def logout
+    session[:user_id] = nil
+    flash[:success] = "You have logged out"
+    redirect_to landing_page_path
+  end
+
+  private 
+  def login_function(email, password)
+    if email.present? && password.present?
+      found_user = User.where(email: email).first
       if found_user
-        authorized_user = found_user.authenticate(params[:password])
+        authorized_user = found_user.authenticate(password)
         if authorized_user
           session[:user_id] = found_user.id
           flash[:success] = "You are logged in"
@@ -28,17 +40,7 @@ class AccessController < ApplicationController
       redirect_to :back, notice: "Please enter email and password."
     end
   end
-
-  # Logout functionality
-  def logout
-    session[:user_id] = nil
-    flash[:success] = "You have logged out"
-    redirect_to landing_page_path
-  end
-
-  private 
-
-  # Allowing necessary params for signup
+  
   def user_params
     params.require(:user).permit(:email, :password, :password_digest)
   end

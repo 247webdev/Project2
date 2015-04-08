@@ -7,13 +7,12 @@ class SearchesController < ApplicationController
   def resultsShow
     category = category_converter params[:category].downcase
     radius   = params[:radius]
-    @users = searchFunction(category, radius)
-    binding.pry
+    @users = search_function(category, radius)
   end
 
   
   private
-  def searchFunction(category, radius)
+  def search_function(category, radius)
     # Getting all gifts based upon category
     results = Gift.where(category_id: category)
 
@@ -48,7 +47,7 @@ class SearchesController < ApplicationController
     end # users.select
 
     return distant_users.uniq
-  end # searchFunction
+  end # search_function
 
   # Helper function for converting user friendly paramaters to data friendly stored integer representation
   def category_converter param
