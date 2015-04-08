@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "access#landingpage", as: :landingpage
+  root "access#landingpage", as: :landing_page
   
   post '/access/login', to: "access#attempt_login", as: 'login'
 
@@ -11,9 +11,6 @@ Rails.application.routes.draw do
   delete '/logout', to: "access#logout", as: "logout"
 
   get 'searches/index', as: "search"
-
-
-  # get 'searches/results'
   
   post 'searches/results', to: "searches#results" # Christian asking, why is this route needed? I'm not understanding and feel that it is not needed.
 

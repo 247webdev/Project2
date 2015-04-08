@@ -3,14 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  #see if the user is logged in and if so redirect them back to home
   private
 
   # Preventing signed in users from accessing the create user page
   def prevent_login_signup
     if session[:user_id]
       flash[:notice] = "Already logged in"
-      redirect_to controller: "searches", action: "index"
+      redirect_to search_path
     end
   end
 

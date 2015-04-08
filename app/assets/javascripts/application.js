@@ -20,7 +20,7 @@
 $('document').ready(function() {
   setTimeout(function() {
     $('.flashMessage').slideUp();
-  }, 3500);
+  }, 2500);
 });
 
 
