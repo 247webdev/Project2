@@ -13,18 +13,16 @@ class SearchesController < ApplicationController
   
   private
   def search_function(category, radius)
-    # Getting all gifts based upon category
-    results = Gift.where(category_id: category)
+    gift_results = Gift.where(category_id: category)
 
     # Removing any gifts related to the logged in user
     if session[:user_id]
-      filtered_results = results.reject { |result| result.user_id == session[:user_id] }
+      filtered_results = gift_results.reject { |result| result.user_id == session[:user_id] }
     else
-      filtered_results = results
+      filtered_results = gift_results
     end
 
-    # Grabbing users of gifts
-    users = filtered_results.map { |result| result.user}
+    users = filtered_results.map { |gift| gift.user}
 
     if session[:user_id]
       # Creating a variable that can use the perimeter_search call, defined in Zipcode class (zipcode.rb)
@@ -38,7 +36,6 @@ class SearchesController < ApplicationController
     # Getting all zipcodes within a given radius
     valid_locations = zip.perimeter_search(radius)
 
-    # Getting zipcodes from valid_locations array of hashes
     location_zips = valid_locations.map { |item| item[:zipcode] }
 
     # Selecting only users that are within the valid_lacations
