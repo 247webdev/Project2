@@ -1,19 +1,16 @@
 class AccessController < ApplicationController
   before_action :prevent_login_signup, only: :landingpage
-  # Landing page 
+
   def landingpage
   end
 
-  # About page
   def about
   end
 
-  # Login functionality
   def attempt_login
     login_function(params[:email], params[:password])
   end
 
-  # Logout functionality
   def logout
     session[:user_id] = nil
     flash[:success] = "You have logged out"
