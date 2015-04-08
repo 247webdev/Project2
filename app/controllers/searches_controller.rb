@@ -1,10 +1,13 @@
 class SearchesController < ApplicationController
 
+
   before_action :default_values_for_not_signed_in, only: [:results]
 
+  # Search page
   def index
   end
 
+  # Search redirect to 
   def results
     category = params[:category].downcase
     radius = params[:radius]
@@ -15,15 +18,6 @@ class SearchesController < ApplicationController
       flash.now[:notice] = "Please enter a valid search term. (Your options are Time, Service, Money or Object.)"
       render :index
     end
-    # if params[:category] === "" && params[:location] === "" #if no search fields are entered 
-    #  flash[:notice] === "Please enter a search term"
-    # elsif (params[:category] === "" && params[:location] === "#{params[:location]}") #if location only is entered 
-    #   @users === User.where(@user.location === params[:location])
-    # elsif (params[:category] === "#{params[:category]}" && params[:location] === "") #if category only is entered 
-    #   @users === User.where(category === params[:category])
-    # else (params[:category] === "#{params[:category]}" && params[:location] === "#{params[:location]}")
-    #   @users === User.where(location === params[:location] && category === params[:category])
-    # end
   end
 
   def resultsShow
@@ -72,19 +66,11 @@ class SearchesController < ApplicationController
     # remove any duplicate users in the results
     @users = users.uniq
 
-
-# this is for all encoumpassing search results. no category and all territories
-# radius = 7000 # large radius to include all territory
-
-# results = Gift.where(category_id: category) # these are the gifts based on the category search
-
-
-
-
   end
 
   private
 
+  # Helper function for converting user friendly paramaters to data friendly stored integer representation
   def category_converter param
     if param == "time"
       return 1
@@ -97,9 +83,7 @@ class SearchesController < ApplicationController
     end
   end
 
-  def default_values_for_not_signed_in
-  end
-
+  # Whitelisting parameters for search
   def search_params
     params.require(:search).permit(:category, :radius, :zipcode )
   end

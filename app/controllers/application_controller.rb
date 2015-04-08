@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   #see if the user is logged in and if so redirect them back to home
   private
 
+  # Preventing signed in users from accessing the create user page
   def prevent_login_signup
     if session[:user_id]
       flash[:notice] = "Already logged in"
@@ -13,6 +14,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Preventing not signed in users from accessing show pages, edit pages
   def no_log_show
     if !session[:user_id]
       flash[:notice] = "Please log in or sign up!"

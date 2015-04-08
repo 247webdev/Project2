@@ -1,13 +1,14 @@
 class AccessController < ApplicationController
-
-  # before_action :prevent_login_signup, only: [:landingpage]
-
+  
+  # Landing page 
   def landingpage
   end
 
+  # About page
   def about
   end
 
+  # Login functionality
   def attempt_login
     if params[:email].present? && params[:password].present?
       found_user = User.where(email: params[:email]).first
@@ -28,6 +29,7 @@ class AccessController < ApplicationController
     end
   end
 
+  # Logout functionality
   def logout
     session[:user_id] = nil
     flash[:notice] = "You have logged out"
@@ -36,6 +38,7 @@ class AccessController < ApplicationController
 
   private 
 
+  # Allowing necessary params for signup
   def user_params
     params.require(:user).permit(:email, :password, :password_digest)
   end
