@@ -3,30 +3,16 @@ class SearchesController < ApplicationController
   def index
   end
 
-  # Search redirect to 
-  def results
-    category = params[:category].downcase
-    radius = params[:radius]
-    if (category == "time" || category == "service" || category == "money" || category == "object") && radius
-      redirect_to action: "resultsShow", category: category, radius: radius
-    else
-      flash.now[:notice] = "Please enter a valid search term. (Your options are Time, Service, Money or Object.)"
-      render :index
-    end
-  end
-
   # Showing seach results
   def resultsShow
-
-    # the searched params
-    category = category_converter params[:category]
+    category = category_converter params[:category].downcase
     radius   = params[:radius]
     @users = searchFunction(category, radius)
-
+    binding.pry
   end
 
-  private
   
+  private
   def searchFunction(category, radius)
     # Getting all gifts based upon category
     results = Gift.where(category_id: category)
@@ -48,7 +34,7 @@ class SearchesController < ApplicationController
 
     else
       zip = Zipcode.find_by_zipcode("66952") # 66952 is the geographic center of the USA. It is Lebanon, KS
-    end
+    end # :user_id conditional
 
     # Getting all zipcodes within a given radius
     valid_locations = zip.perimeter_search(radius)
@@ -59,11 +45,10 @@ class SearchesController < ApplicationController
     # Selecting only users that are within the valid_lacations
     distant_users = users.select do |user| 
             location_zips.include?(user.zipcode)  
-    end
+    end # users.select
 
     return distant_users.uniq
-
-  end
+  end # searchFunction
 
   # Helper function for converting user friendly paramaters to data friendly stored integer representation
   def category_converter param
@@ -78,7 +63,6 @@ class SearchesController < ApplicationController
     end
   end
 
-  # Whitelisting parameters for search
   def search_params
     params.require(:search).permit(:category, :radius, :zipcode )
   end
