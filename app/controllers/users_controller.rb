@@ -2,11 +2,7 @@ class UsersController < ApplicationController
   # From application controller, preventing signed in users from creating another user
   before_action :prevent_login_signup, only: [:new, :create]
   before_action :get_user, only: [:edit, :show, :update, :destroy]
-  
-  # Ensuring users can only edit their own profiles
-  before_action only: :edit do
-    invalid_edit params[:id]
-  end
+  before_action :check_edit_validity, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -45,6 +41,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:id, :first_name, :last_name, :email, :zipcode, :password, :password_digest, gifts_attributes: [:title, :description, :category_id])
   end
+
   def create_user(user, pic)
     user.gifts[0].type_id = 1
     user.gifts[0].type_id = 2
@@ -61,14 +58,12 @@ class UsersController < ApplicationController
     end
   end
 
-
   # Ensuring users can only edit their profile
-  def invalid_edit id
-    if session[:user_id].to_s != id
+  def check_edit_validity
+    if session[:user_id].to_s != params[:id]
       flash[:notice] = "You may only edit your user page"
-      redirect_to '/'
+      redirect_to root_path
     end
   end
-
 end
 
