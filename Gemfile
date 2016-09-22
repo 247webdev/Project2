@@ -21,6 +21,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Bootstrap gems
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
+
 gem 'nokogiri'
 gem 'rack', '~>1.1'
 # heroku 12factor pairing
