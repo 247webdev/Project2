@@ -8,14 +8,12 @@ class UsersController < ApplicationController
     invalid_edit params[:id]
   end
 
-  # New user page, setting instances for nested forms
   def new
     @user = User.new
     2.times do @user.gifts.new
     end
   end
 
-  # Edit user page
   def edit
     @user = User.find_by_id(params[:id])
     @gift = @user.gifts

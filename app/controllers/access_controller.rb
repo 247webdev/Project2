@@ -37,9 +37,4 @@ class AccessController < ApplicationController
       redirect_to :back, notice: "Please enter email and password."
     end
   end
-  
-  def user_params
-    params.require(:user).permit(:email, :password, :password_digest)
-  end
-
 end
