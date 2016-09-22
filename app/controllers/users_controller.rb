@@ -14,21 +14,15 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @gift = @user.gifts
-    @give = @gift.find_by(type_id: 1)
-    @get = @gift.find_by(type_id: 2)
-  end
-
-  def show 
-    @gift = @user.gifts
-    @give = @gift.find_by(type_id: 1)
-    @get = @gift.find_by(type_id: 2)
-  end
-
   def create
     @user = User.new user_params
     create_user(@user, params[:uploadcare])
+  end
+
+  def show
+  end
+
+  def edit
   end
 
   def update
