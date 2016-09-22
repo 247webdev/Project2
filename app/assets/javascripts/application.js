@@ -13,20 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree 
+//= require_tree .
 //= require bootstrap
-
-// Flash Message Slide Up
-$('document').ready(function() {
-  setTimeout(function() {
-    $('.flashMessage').slideUp();
-  }, 2500);
-});
-
-
-// Load icon visibility
-$( ".submit-button > input" ).click(function() {
-  // alert( "Handler for .click() called." );
-  $('#loading').css('visibility', 'visible');
-
-});
